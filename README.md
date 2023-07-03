@@ -1,1 +1,1 @@
-# WIP openai / hf + langchain + chromadb
+# WIP PROJECT
