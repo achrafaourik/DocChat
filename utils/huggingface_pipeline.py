@@ -14,7 +14,7 @@ from . import functions
 from langchain.llms.fake import FakeListLLM
 
 
-with open('./utils/template_ayumi.txt', 'r') as f:
+with open('./utils/template.txt', 'r') as f:
     template = functions.convert_to_multiline_string(f.read())
 
 
@@ -72,7 +72,7 @@ class HuggingFaceModel:
 
         # run the predictions using the llm chain
         generated_text = cls.llm_chain.predict(history=history,
-                                               examples=examples, 
+                                               examples=examples,
                                                last_interactions=last_interactions,
                                                input=text)
         elapsed = 1000 * (perf_counter() - t0)
