@@ -11,7 +11,6 @@ from auto_gptq import AutoGPTQForCausalLM, BaseQuantizeConfig
 import os
 import warnings
 from . import functions
-from langchain.llms.fake import FakeListLLM
 
 
 with open('./utils/template.txt', 'r') as f:
@@ -56,7 +55,7 @@ class HuggingFaceModel:
             # responses=[" default response"]
             # cls.llm = FakeListLLM(responses=responses)
 
-            cls.prompt = PromptTemplate(template=template, input_variables=["history", "examples", "last_interactions", "input"])
+            cls.prompt = PromptTemplate(template=template, input_variables=["history", "last_interactions", "input"])
             cls.llm_chain = LLMChain(prompt=cls.prompt, llm=cls.llm)
 
             set_seed(420)
@@ -72,7 +71,6 @@ class HuggingFaceModel:
 
         # run the predictions using the llm chain
         generated_text = cls.llm_chain.predict(history=history,
-                                               examples=examples,
                                                last_interactions=last_interactions,
                                                input=text)
         elapsed = 1000 * (perf_counter() - t0)

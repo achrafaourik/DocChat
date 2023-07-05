@@ -43,8 +43,8 @@ class LoadModelsView(APIView):
 
 
 class ChatbotView(APIView):
-    authentication_classes = [authentication.TokenAuthentication, OAuth2Authentication]
-    permission_classes = [permissions.IsAuthenticated]
+    # authentication_classes = [authentication.TokenAuthentication, OAuth2Authentication]
+    # permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
         print('-' * 80)
@@ -55,17 +55,10 @@ class ChatbotView(APIView):
         user = request.user
         email = user.email
 
-        # Fetch all items associated with the current user
-        user_items_list = list(Item.objects.filter(user=user))
-        user_items_dict_list = [model_to_dict(item) for item in user_items_list]
-        list_items = [x['name'] for x in user_items_dict_list]
-
         # get the body data from the request
         data = request.data
         text = data['message']
 
-        # predict nsfw score for the user message
-        nsfw_classifier = NSFWClassifier().get_classifier()
         related_history = functions.get_related_history(email, text)
 
         # get the last n conversations
@@ -82,18 +75,7 @@ class ChatbotView(APIView):
         current_interaction = "\n".join([f'USER: {text}', f'ASSISTANT: {answer}'])
         functions.write_current_interaction(email, current_interaction)
 
-        # get the list of emotions
-        classifier = EmotionClassifier().get_classifier()
-        list_emotions = classifier(answer)
-        scores = [x['score'] for x in list_emotions[0]]
-        single_emotion = list_emotions[0][np.argmax(scores)]['label']
-        labels = [x['label'] for x in list_emotions[0]]
-        scores = [round(x['score'], 2) * 100  for x in list_emotions[0]]
-        list_emotions = [dict(zip(labels, scores))]
-
-        return Response({'answer': answer,
-                         'list_emotions': list_emotions,
-                         'single_emotion': single_emotion})
+        return Response({'answer': answer})
 
 
 class DeleteHistoryView(APIView):

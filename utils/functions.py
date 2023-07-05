@@ -34,8 +34,8 @@ def get_related_history(user_email, current_input):
 
     res = collection.query(
         query_texts=[current_input],
-        # n_results=int(os.environ.get('N_RELATED_INTERACTIONS', 5)), #TODO: update this back and uncomment
-        n_results=3,
+        n_results=int(os.environ.get('N_RELATED_INTERACTIONS', 5)), #TODO: update this back and uncomment
+        # n_results=3,
         where={"email": user_email})
 
     related_interactions = res['documents'][0]

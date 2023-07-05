@@ -1,1 +1,4 @@
 .env
+*.ipynb*
+pdf_files/*
+text_files/*
