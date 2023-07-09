@@ -25,3 +25,5 @@ sentence_transformers
 langchain
 django-oauth-toolkit
 gpustat
+pypdf
+openai

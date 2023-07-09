@@ -1,0 +1,93 @@
+Pinecone 2.0 is Available and Free | Pinecone 
+Log In 
+Sign Up Free 
+Sign In 
+Create Account 
+ 
+ 
+Toggle menu 
+Pinecone 2.0 is Available and Free 
+Pinecone 2.0 is generally available as of today, with many 
+new features 
+and 
+new pricing 
+ which is up to 10x cheaper for most customers and, for some, completely free!
+On September 19, 2021, we announced Pinecone 2.0, which introduced many new features that get vector similarity search applications to production faster. Today, we are pleased to announce Pinecone 2.0 is generally available. The all-new pricing lets you choose the plan that works best for you.
+Every use case comes with its own requirements for performance, number of vectors, and throughput. Our new pricing gives you the choice to optimize Pinecone to meet your needs and pay (less) as you go.
+The new pricing is based on hardware usage (number and types of pods) and better aligns with your actual consumption patterns. We believe that pricing by hardware is simpler, more transparent, and gives you the flexibility to optimize cost and performance for your dataset and use case.
+We are introducing three new pricing plans: Free, Standard, and Dedicated.
+Free 
+We are committed to helping companies create better products using vector search. We want to remove the obstacles to getting these projects into production. That includes the obstacle — for some — of cost.
+Our new Free plan lets you use the fully managed Pinecone service for small workloads without any cost. It comes with a single P1 pod, which is enough to search through roughly a million vectors in around 100ms, or through 100K vectors in around 20ms. For many users this is all they’ll need.
+With the Free plan you get the same production-ready, secure, and fully managed vector database as the other plans.
+Standard 
+When you are ready to scale up, the new Standard plan lets you choose the type of pod, the number of pods, and the number of replicas to optimize your Pinecone service.
+In addition to the P1 pods, you have the option of S1 pods. The S1 pods are storage-optimized and suitable for a large number of vectors when you are more tolerant of slightly higher latency. S1 pods are compatible with Pinecone’s hybrid index. Each S1 pod includes 1 vCPU and 20GB SSD storage.
+With the Standard plan, you can achieve low latencies across any number of vectors. Pricing in this plan is based on the number of pods used per hour, with P1 pods priced at $0.070/hour and S1 pods at $0.075/hour. Connect with us for help with choosing the best configuration to meet your requirements.
+The Standard plan offers priority support within a 24-hour timeframe and increased reliability with multiple availability zones.
+Dedicated 
+If your workload is very large or if you have unique compliance or deployment requirements, our Dedicated plan is for you. Our team will work with you to configure a custom deployment that meets your requirements and is optimized for your workload, in a dedicated GCP or AWS environment in any region.
+As with our Standard plan, our Dedicated plan ensures high availability with multi-AZ, with the added peace of mind of a fully dedicated cluster and high-priority support within a 4-hour time window.
+Get Started 
+Pinecone 2.0 brings vector similarity search from R&D labs to production applications, for companies of all sizes. Our new hardware-based pricing plans provide the flexibility to get started quickly and scale effortlessly.
+What will you build with the Pinecone vector database? Get started now: 
+Visit our pricing page 
+for more detailed information 
+Sign up 
+and start using Pinecone for free 
+Contact us 
+to discuss your project 
+Learn more 
+about Pinecone 2.0 
+Comments 
+Edo Liberty 
+Founder and CEO 
+Contents: 
+Free 
+Standard 
+Dedicated 
+Get Started 
+Share: 
+Twitter 
+ 
+ 
+Facebook 
+ 
+ 
+Hacker News 
+What will you build?
+Upgrade your search or recommendation systems with just a few lines of code, or 
+contact us 
+ for help.
+Create Account 
+Pricing 
+Docs 
+Learn 
+Company 
+Contact 
+Careers 
+Support 
+© Pinecone Systems, Inc. | San Francisco, CA | 
+Terms 
+| 
+Privacy 
+| 
+Product Privacy 
+| 
+Cookies 
+| 
+Trust & Security 
+| 
+System Status 
+Pinecone is a registered trademark of Pinecone Systems, Inc.
+Don’t fill this out if you’re human: 
+Get product and article updates 
+ 
+ 
+ 
+ 
+ 
+ 
+Get Updates 
+Subscribed successfully.
+Failed to submit.

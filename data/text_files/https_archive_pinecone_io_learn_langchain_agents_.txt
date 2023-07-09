@@ -1,0 +1,379 @@
+Superpower LLMs with Conversational Agents in LangChain | Pinecone 
+Log In 
+Sign Up Free 
+Sign In 
+Create Account 
+ 
+ 
+Toggle menu 
+Superpower LLMs with Conversational Agents 
+L 
+arge 
+L 
+anguage 
+M 
+odels (LLMs) are incredibly powerful, yet they lack particular abilities that the “dumbest” computer programs can handle with ease. Logic, calculation, and search are examples of where computers typically excel, but LLMs struggle.
+Computers can solve incredibly complex math problems, yet if we ask GPT-4 to tell us the answer to 
+, it fails: 
+ 
+ 
+Asking GPT-4 to perform a simple calculation often results in an incorrect answer. A simple calculator can perform this same calculation without issue.
+According to a simple calculator, the answer is 
+, rounded to three decimal places. Isn’t it fascinating that a simple calculator program can do this, but an incredibly sophisticated AI engine fails?
+That’s not all. If I ask GPT-4, “How do I use the LLMChain in LangChain?” it struggles again: 
+ 
+ 
+The LangChain spoken about here isn’t the LangChain we know. It’s an old blockchain project. The response is both outdated and full of false information.
+It’s true that LangChain 
+was 
+a blockchain project 
+[1] [2] 
+. Yet, there didn’t seem to be any “LLMChain” component nor “LANG tokens” — these are both hallucinations.
+The reason GPT-4 is unable to tell us about LangChain is that it has no connection to the outside world. Its only knowledge is what it captured from its training data, which cuts off in late 2021.
+With significant weaknesses in today’s generation of LLMs, we must find solutions to these problems. One “suite” of potential solutions comes in the form of “agents”.
+These agents don’t just solve the problems we saw above but 
+many 
+ others. In fact, adding agents has an almost unlimited upside in their LLM-enhancing abilities.
+In this chapter, we’ll talk about agents. We’ll learn what they are, how they work, and how to use them within the LangChain library to superpower our LLMs.
+What are Agents?
+We can think of agents as enabling “tools” for LLMs. Like how a human would use a calculator for maths or perform a Google search for information — agents allow an LLM to do the same thing.
+Agents are LLMs that can use tools like calculators, search, or executing code.
+Using agents, an LLM can write and execute Python code. It can search for information and even query a SQL database.
+Let’s take a look at a straightforward example of this. We will begin with a “zero-shot” agent (more on this later) that allows our LLM to use a calculator.
+Agents and Tools 
+To use agents, we require three things: 
+A base LLM, 
+A tool that we will be interacting with, 
+An agent to control the interaction.
+Let’s start by installing 
+ and initializing our base LLM.
+Now to initialize the calculator tool. When initializing tools, we either create a custom tool or load a prebuilt tool. In either case, the “tool” is a 
+utility chain 
+given a tool 
+and 
+. 
+For example, we could create a new calculator tool from the existing 
+chain: 
+In[3]: 
+In[4]: 
+Out[4]: 
+We must follow this process when using custom tools. However, a prebuilt 
+tool does the same thing. So, we could do the same as above like so: 
+In[5]: 
+In[6]: 
+Out[6]: 
+Naturally, we can only follow this second approach 
+if 
+ a prebuilt tool for our use case exists.
+We now have the LLM and tools but no 
+agent 
+. To initialize a simple agent, we can do the following: 
+The 
+agent 
+used here is a 
+agent. 
+Zero-shot 
+means the agent functions on the current action only — it has 
+no 
+memory. It uses the 
+ReAct 
+framework to decide which tool to use, based solely on the tool’s 
+. 
+We won’t discuss the 
+ReAct framework 
+in this chapter, but you can think of it as if an LLM could cycle through 
+Re 
+asoning and 
+Act 
+ion steps. Enabling a multi-step process for identifying answers.
+Don't fill this out if you're human: 
+ReAct deserves an article in itself. If you'd like to be updated when it comes, you can subscribe to our newsletter here!
+ 
+ 
+ 
+ 
+Submit 
+ 
+ 
+Subscribed successfully.
+Failed to submit.
+With our agent initialized, we can begin using it. Let’s try a few prompts and see how the agent responds.
+In[8]: 
+Out[8]: 
+In[9]: 
+Out[9]: 
+The answer here is correct. Let’s try another: 
+In[10]: 
+Out[10]: 
+Looks great! But what if we decide to ask a non-math question? What if we ask an easy common knowledge question?
+In[11]: 
+Out[11]: 
+We run into an error. The problem here is that the agent keeps trying to use a tool. Yet, our agent contains only one tool — the calculator.
+Fortunately, we can fix this problem by giving our agent more tools! Let’s add a plain and simple LLM tool: 
+With this, we have a new general-purpose LLM tool. All we do is add it to the 
+list and reinitialize the agent: 
+Now we can ask the agent questions about both math and general knowledge. Let’s try the following: 
+In[15]: 
+Out[15]: 
+Now we get the correct answer! We can ask the first question: 
+In[16]: 
+Out[16]: 
+And the agent understands it must refer to the calculator tool, which it does — giving us the correct answer.
+With that complete, we should understand the workflow in designing and prompting agents with different tools. Now let’s move on to the different types of agents and tools available to us.
+Agent Types 
+LangChain offers several types of agents. In this section, we’ll examine a few of the most common.
+Zero Shot ReAct 
+We’ll start with the agent we saw earlier, the 
+agent. 
+As described earlier, we use this agent to perform 
+“zero-shot” 
+tasks on some input. That means the agent considers 
+one single 
+interaction with the agent — it will have no 
+memory 
+. 
+Let’s create a 
+list to use with the agent. We will include an 
+tool and a SQL DB tool that we 
+defined here 
+. 
+We initialize the 
+agent like so: 
+To give some context on the SQL DB tool, we will be using it to query a “stocks database” that looks like this: 
+obs_id 
+stock_ticker 
+price 
+data 
+1 
+‘ABC’ 
+200 
+1 Jan 23 
+2 
+‘ABC’ 
+208 
+2 Jan 23 
+3 
+‘ABC’ 
+232 
+3 Jan 23 
+4 
+‘ABC’ 
+225 
+4 Jan 23 
+5 
+‘ABC’ 
+226 
+5 Jan 23 
+6 
+‘XYZ’ 
+810 
+1 Jan 23 
+7 
+‘XYZ’ 
+803 
+2 Jan 23 
+8 
+‘XYZ’ 
+798 
+3 Jan 23 
+9 
+‘XYZ’ 
+795 
+4 Jan 23 
+10 
+‘XYZ’ 
+791 
+5 Jan 23 
+Now we can begin asking questions about this SQL DB and pairing it with calculations via the calculator tool.
+In[16]: 
+Out[16]: 
+We can see a lot of output here. At each step, there is a 
+Thought 
+that results in a chosen 
+Action 
+and 
+Action Input 
+. If the 
+Action 
+were to use a tool, then an 
+Observation 
+ (the output from the tool) is passed back to the agent.
+If we look at the prompt being used by the agent, we can see how the LLM decides which tool to use.
+In[17]: 
+Out[17]: 
+We first tell the LLM the tools it can use ( 
+and 
+). Following this, an example format is defined; this follows the flow of 
+(from the user), 
+, 
+, 
+, 
+— and repeat until reaching the 
+. 
+These tools and the thought process separate 
+agents 
+from 
+chains 
+ in LangChain.
+Whereas a 
+chain 
+ defines an immediate input/output process, the logic of agents allows a step-by-step thought process. The advantage of this step-by-step process is that the LLM can work through multiple reasoning steps or tools to produce a better answer.
+There is still one part of the prompt we still need to discuss. The final line is 
+. 
+The 
+is where we add 
+every 
+thought or action the agent has already performed. All thoughts and actions (within the 
+current 
+agent executor chain) can then be accessed by the 
+next 
+ thought-action-observation loop, enabling continuity in agent actions.
+Conversational ReAct 
+The zero-shot agent works well but lacks 
+conversational memory 
+. This lack of memory can be problematic for chatbot-type use cases that need to 
+remember 
+ previous interactions in a conversation.
+Fortunately, we can use the 
+agent to 
+remember 
+interactions. We can think of this agent as the same as our previous 
+Zero Shot ReAct 
+agent, but with 
+conversational memory 
+. 
+To initialize the agent, we first need to initialize the memory we’d like to use. We will use the simple 
+. 
+We pass this to the 
+parameter when initializing our agent: 
+If we run this agent with a similar question, we should see a similar process followed as before: 
+In[22]: 
+Out[22]: 
+So far, this looks very similar to our last 
+zero-shot 
+agent. However, 
+unlike 
+our zero-shot agent, we can now ask 
+follow-up 
+questions. Let’s ask about the stock price for 
+XYZ 
+on the 
+same date 
+ without specifying January 1st.
+In[24]: 
+Out[24]: 
+We can see in the first 
+that the agent is looking for 
+. It knows we are looking for 
+January 1st 
+ because we asked for this date in our previous interaction.
+How can it do this? We can take a look at the prompt template to find out: 
+In[23]: 
+Out[23]: 
+We have a much larger instruction setup at the start of the prompt, but most important are the two lines near the end of the prompt: 
+Here is where we add all previous interactions to the prompt. Within this space will be the information that we asked 
+ — allowing the agent to understand that our follow-up question refers to the same date.
+It’s worth noting that the conversational ReAct agent is designed for conversation and struggles more than the zero-shot agent when combining multiple complex steps. We can see this if we ask the agent to answer our earlier question: 
+In[26]: 
+Out[26]: 
+With this, the agent still manages to solve the question but uses a more complex approach of pure SQL rather than relying on more straightforward SQL and the calculator tool.
+ReAct Docstore 
+Another common agent is the 
+agent. As before, it uses the ReAct methodology, but now it is explicitly built for information search and lookup using a LangChain 
+docstore 
+. 
+LangChain docstores allow us to store and retrieve information using traditional retrieval methods. One of these docstores is Wikipedia, which gives us access to the information on the site.
+We will implement this agent using two docstore methods — 
+and 
+. With 
+, our agent will search for a relevant article, and with 
+, the agent will find the relevant chunk of information within the retrieved article. To initialize these two tools, we do: 
+Now initialize the agent: 
+Let’s try the following: 
+In[30]: 
+Out[30]: 
+The prompt for this agent is very long, so we’ll show a shortened version. All it contains are several examples of how this agent should use the 
+and 
+tools: 
+The prompt contains several examples in a similar format. At the end of the prompt, we see: 
+As before, we have an 
+to pass in the most recent user query and the 
+ to keep track of previous thoughts and actions.
+Unlike our 
+conversational 
+agent, there is 
+no 
+ 
+input. That means that we are using another 
+zero-shot 
+agent. 
+Self-Ask With Search 
+Let’s look at one final agent — the 
+ agent. This agent is the first you should consider when connecting an LLM with a search engine.
+The agent will perform searches and ask follow-up questions as often as required to get a final answer. We initialize the agent like so: 
+Now let’s ask a question requiring multiple searches and 
+“self ask” 
+steps. 
+In[38]: 
+Out[38]: 
+We can see the multi-step process of the agent. It performs multiple follow-up questions to hone in on the final answer.
+That’s it for this chapter on LangChain agents. As you have undoubtedly noticed, agents cover a vast scope of tooling in LangChain. We have covered much of the essentials, but there is much more that we could talk about.
+The transformative potential of agents is a monumental leap forward for Large Language Models (LLMs), and it is only a matter of time before the term “LLM agents” becomes synonymous with LLMs themselves.
+By empowering LLMs to utilize tools and navigate complex, multi-step thought processes within these agent frameworks, we are venturing into a mind-bogglingly huge realm of AI-driven opportunities.
+References 
+[1] 
+Langchain.io 
+(2019), Wayback Machine 
+[2] Jun-hang Lee, 
+Mother of Language Slides 
+(2018), SlideShare 
+Next Chapter: 
+Building Custom Tools for LLM Agents 
+Comments 
+LangChain AI Handbook 
+Chapters: 
+LangChain: Introduction and Getting Started 
+Prompt Engineering and LLMs with Langchain 
+Chatbot Memory with Langchain 
+Fixing Hallucination with Knowledge Bases 
+Superpower LLMs with Conversational Agents in LangChain 
+What are Agents?
+Agent Types 
+References 
+Building Custom Tools for LLM Agents 
+What will you build?
+Upgrade your search or recommendation systems with just a few lines of code, or 
+contact us 
+ for help.
+Create Account 
+Pricing 
+Docs 
+Learn 
+Company 
+Contact 
+Careers 
+Support 
+© Pinecone Systems, Inc. | San Francisco, CA | 
+Terms 
+| 
+Privacy 
+| 
+Product Privacy 
+| 
+Cookies 
+| 
+Trust & Security 
+| 
+System Status 
+Pinecone is a registered trademark of Pinecone Systems, Inc.
+Don’t fill this out if you’re human: 
+Get product and article updates 
+ 
+ 
+ 
+ 
+ 
+ 
+Get Updates 
+Subscribed successfully.
+Failed to submit.

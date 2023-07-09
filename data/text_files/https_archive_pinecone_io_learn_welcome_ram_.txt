@@ -1,0 +1,78 @@
+Meet Pinecone’s New VP of Engineering, Dr. Ram Sriharsha | Pinecone 
+Log In 
+Sign Up Free 
+Sign In 
+Create Account 
+ 
+ 
+Toggle menu 
+Meet Pinecone’s New VP of Engineering, Dr. Ram Sriharsha 
+Pinecone is rapidly growing, which means we need people driving our teams that know how to not only lead at the helm but support us from the bottom up, so we can grow from a strong foundation. With experience in engineering, product management, and VP roles at the likes of Yahoo, Databricks, and Splunk, our new VP of Engineering, 
+Dr. Ram Sriharsha 
+, brings a wealth of knowledge to our team and is uniquely positioned to help execute on our lofty vision.
+At Yahoo, he was both a principal software engineer and then research scientist; at Databricks, he was the product and engineering lead for the unified analytics platform for genomics; and, in his three years at Splunk, he played multiple roles including Sr Principal Scientist, VP Engineering and Distinguished Engineer.
+With this wealth of experience, he could have done anything. So, why did he choose to join us? The decision was easy, Ram said.
+“I tend to choose companies and technologies that are very cutting edge,” he said. “I try to place my bet on technologies that are going to be the way things are done. … From my own personal experience, I knew that semantic search over 
+vector embeddings 
+wasn’t a solved problem, and I recognized the significance of such a technology to unlocking new use cases around unstructured data. … Pinecone is working on exactly this.” 
+Jumping onto the Databricks and Splunk teams after seeing their potential, Ram’s intuition is keen and impressive. But, again, we were curious as to why a seemingly small, scrappy company was so attractive to him.
+You can make more moves working on cutting edge technologies at a company of this size, where everyone’s contributions are ground-shaking, than you could even as VP at a big company, he said. Pinecone is the place to be, in his eyes.
+“I really want to build systems and interface with users,” he said. “At Pinecone, you’re continually iterating and learning. In a big company, Version 0 can take many years to get out, and by then you’re not connected to the product anymore. At Pinecone, that’s not a problem. For example, one of our scientists fixed something and got the fix into production the very same night. This rarely happens at a big company.” 
+In addition, the technology Pinecone is creating was a no brainer for Ram, someone whose finger is always on the pulse. He doesn’t just want to work at a company that is pursuing greatness; he wants to get his hands dirty too. He watched as CEO Edo Liberty was on the forefront of Machine Learning research and knew he had to be involved. He wasn’t making the old stuff better; he was building a different type of database in a new domain.
+The team is innovating on science, as well, Ram said.
+“We are focused on building the world’s best 
+vector database 
+,” Ram said. “The use cases you can build on top of it are fascinating to me. We are writing our entire database in Rust, which is interesting — if we can shave off 20% memory usage, that’s savings in cost for customers. It’s very valuable for us to do that. What we are building is pushing the limits of databases themselves. How do we build algorithms that are accurate but allow us to scale? These are really amazing challenges in redesigning databases.” 
+After working on teams as the first employee, as well as stepping into high-level leadership roles right away, Ram knows what it takes to create a strong team and maintain that team for years to come. From the outset of his role, he wants to ensure he builds the best team of scientists possible and is looking for people who are just as excited as he is about transforming search using machine learning and vector databases.
+When thinking about hiring, it’s not just about coding skill, either. Having an open culture and strong teamwork is vital, and that’s why he chose Pinecone, he said. Everyone has the opportunity to build and contribute, and he wants all engineers to feel like they’re getting their hands dirty and owning their own projects.
+Even with a strong culture coming in, though, the team cannot remain complacent, especially as it begins to think about expansion and reaching out to different audiences for hiring. This includes working with a recruiting company focused on diversity, building relationships with organizations that support women in coding, like Grace Hopper, and constantly evolving to be welcoming and inclusive. The team has a long way to go with this, he said, but he’s excited to work on it.
+Ram is set to take Pinecone into its next phase of greatness, as we work to build out and up. He hopes everyone is as excited about this journey as he is, and he invites anyone who resonates with it to come along.
+“We are truly trying to build something fundamentally new here,” Ram said. “I really want that to resonate with people reading this. If you resonate with this, this is the place to be.” 
+We are hiring. Come work with Ram!
+Comments 
+Greg Kogan 
+VP Marketing 
+Share: 
+Twitter 
+ 
+ 
+Facebook 
+ 
+ 
+Hacker News 
+What will you build?
+Upgrade your search or recommendation systems with just a few lines of code, or 
+contact us 
+ for help.
+Create Account 
+Pricing 
+Docs 
+Learn 
+Company 
+Contact 
+Careers 
+Support 
+© Pinecone Systems, Inc. | San Francisco, CA | 
+Terms 
+| 
+Privacy 
+| 
+Product Privacy 
+| 
+Cookies 
+| 
+Trust & Security 
+| 
+System Status 
+Pinecone is a registered trademark of Pinecone Systems, Inc.
+Don’t fill this out if you’re human: 
+Get product and article updates 
+ 
+ 
+ 
+ 
+ 
+ 
+Get Updates 
+Subscribed successfully.
+Failed to submit.

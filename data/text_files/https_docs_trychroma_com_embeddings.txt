@@ -1,0 +1,184 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+🧬 Embeddings | Chroma 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Skip to main content 
+Chroma 
+Python 
+Javascript 
+Discord 
+@trychroma 
+GitHub 
+🏡 Home 
+🔑 Getting Started 
+🧪 Usage Guide 
+🧬 Embeddings 
+👽 About 
+📖 API Cheatsheet 
+🔌 Integrations 
+☁️ Deployment 
+📏 Telemetry 
+🛣️ Roadmap 
+🔍 Troubleshooting 
+⚪️ JS Docs 
+⚪️ Python Docs 
+🧬 Embeddings 
+On this page 
+🧬 Embeddings 
+Select a language 
+Python 
+JavaScript 
+Embeddings are the A.I-native way to represent any kind of data, making them the perfect fit for working with all kinds of A.I-powered tools and algorithms. They can represent text, images, and soon audio and video. There are many options for creating embeddings, whether locally using an installed library, or by calling an API.
+Chroma provides lightweight wrappers around popular embedding providers, making it easy to use them in your apps. You can set an embedding function when you create a Chroma collection, which will be used automatically, or you can call them directly yourself.
+Python 
+JavaScript 
+To get Chroma's embedding functions, import the 
+module. 
+Default: all-MiniLM-L6-v2 
+​ 
+By default, Chroma uses the 
+Sentence Transformers 
+ 
+ model to create embeddings. This embedding model can create sentence and document embeddings that can be used for a wide variety of tasks. This embedding function runs locally on your machine, and may require you download the model files (this will happen automatically).
+Python 
+JavaScript 
+Sentence Transformers 
+​ 
+Chroma can also use any 
+Sentence Transformers 
+ model to create embeddings.
+You can pass in an optional 
+argument, which lets you choose which Sentence Transformers model to use. By default, Chroma uses 
+. You can see a list of all available models 
+here 
+. 
+OpenAI 
+​ 
+Chroma provides a convenient wrapper around OpenAI's embedding API. This embedding function runs remotely on OpenAI's servers, and requires an API key. You can get an API key by signing up for an account at 
+OpenAI 
+. 
+Python 
+JavaScript 
+This embedding function relies on the 
+python package, which you can install with 
+. 
+To use the OpenAI embedding models on other platforms such as Azure, you can use the 
+and 
+parameters: 
+You can pass in an optional 
+argument, which lets you choose which OpenAI embeddings model to use. By default, Chroma uses 
+. You can see a list of all available models 
+here 
+. 
+Cohere 
+​ 
+Chroma also provides a convenient wrapper around Cohere's embedding API. This embedding function runs remotely on Cohere’s servers, and requires an API key. You can get an API key by signing up for an account at 
+Cohere 
+. 
+Python 
+JavaScript 
+This embedding function relies on the 
+python package, which you can install with 
+. 
+You can pass in an optional 
+argument, which lets you choose which Cohere embeddings model to use. By default, Chroma uses 
+model. You can see the available models under 
+section 
+here 
+. 
+Multilingual model example 
+​ 
+Python 
+JavaScript 
+For more information on multilingual model you can read 
+here 
+. 
+Instructor models 
+​ 
+The 
+instructor-embeddings 
+library is another option, especially when running on a machine with a cuda-capable GPU. They are a good local alternative to OpenAI (see the 
+Massive Text Embedding Benchmark 
+rankings).  The embedding function requires the InstructorEmbedding package. To install it, run 
+. 
+There are three models available. The default is 
+, and for better performance you can use 
+or 
+. You can also specify whether to use 
+(default) or 
+. For example: 
+or 
+Keep in mind that the large and xl models are 1.5GB and 5GB respectively, and are best suited to running on a GPU.
+Google PaLM API models 
+​ 
+Google PaLM APIs 
+are currently in private preview, but if you are part of this preview, you can use them with Chroma via the 
+. 
+To use the PaLM embedding API, you must have 
+Python package installed and have the API key. To use: 
+Custom Embedding Functions 
+​ 
+Python 
+JavaScript 
+You can create your own embedding function to use with Chroma, it just needs to implement the 
+protocol. 
+We welcome contributions! If you create an embedding function that you think would be useful to others, please consider 
+submitting a pull request 
+to add it to Chroma's 
+module. 
+You can create your own embedding function to use with Chroma, it just needs to implement the 
+protocol. The 
+ method in a class is strictly all you need.
+We welcome pull requests to add new Embedding Functions to the community.
+Edit this page 
+Previous 
+🧪 Usage Guide 
+Next 
+👽 About 
+Default: all-MiniLM-L6-v2 
+Sentence Transformers 
+OpenAI 
+Cohere 
+Multilingual model example 
+Instructor models 
+Google PaLM API models 
+Custom Embedding Functions 
+Docs 
+Getting Started 
+API Reference 
+Community 
+Discord 
+Twitter 
+More 
+About 
+GitHub 
+Privacy 
+Terms 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

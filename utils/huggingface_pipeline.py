@@ -1,15 +1,10 @@
-import sys
 from transformers import pipeline, set_seed
-from typing import List
-import numpy as np
 from time import perf_counter
-import logging
 from langchain import PromptTemplate, LLMChain
 from langchain.llms import HuggingFacePipeline
-from transformers import AutoTokenizer, pipeline, logging
-from auto_gptq import AutoGPTQForCausalLM, BaseQuantizeConfig
+from transformers import AutoTokenizer, pipeline
+from auto_gptq import AutoGPTQForCausalLM
 import os
-import warnings
 from . import functions
 
 
@@ -67,13 +62,10 @@ class HuggingFaceModel:
         # Make sure the model is loaded
         cls.load()
 
-        t0 = perf_counter()
-
         # run the predictions using the llm chain
         generated_text = cls.llm_chain.predict(history=history,
                                                last_interactions=last_interactions,
                                                input=text)
-        elapsed = 1000 * (perf_counter() - t0)
 
         # Create the custom prediction object.
         return {"answer": generated_text}

@@ -1,0 +1,98 @@
+Product Privacy Statement | Pinecone 
+Log In 
+Sign Up Free 
+Sign In 
+Create Account 
+ 
+ 
+Toggle menu 
+Product Privacy Statement 
+Updated: May 26, 2022 
+Pinecone Systems, Inc. (“Pinecone”) is a managed database for working with vectors. It provides the infrastructure for machine-learning applications that need to search and rank results based on similarity, such as recommendations, personalization, image and semantic search, and more.
+This Product Privacy Statement explains how we collect, use, disclose, and otherwise process personal information on behalf of our enterprise customers (any, a “Customer”) in connection with our products and Hosted Services (collectively, the “Hosted Services”). As a service provider/data processor, Pinecone provides the Hosted Services to its Customers. Pinecone’s Customers are the data owners/data controllers with respect to such personal information processed through the Hosted Services. This Product Privacy Statement does not apply to any websites or other online Hosted Services that do not link to this Product Privacy Statement. To the extent Pinecone shares information with the Customer as this Product Privacy Statement describes, this Product Privacy Statement does not apply to the Customer’s subsequent use of that information.
+Pinecone’s processing of personal information in connection with the Hosted Services is governed by this Product Privacy Statement and the relevant Customer agreement. In the event of any conflict between this Product Privacy Statement and the relevant Customer agreement, the customer agreement will control to the extent permitted by applicable law.
+This Product Privacy Statement is not a substitute for any privacy notice that Pinecone Customers are required to provide to their employees or other authorized users.
+Information We Collect 
+Information collected via the Hosted Services 
+. The Customer is responsible for determining the scope of information that Pinecone may collect and process. The Hosted Services process information through copying the data catalogue – upon your request - from your cloud servers into our systems, transform the data into vectors, store those vectors, and allow you to add, edit or delete them by changing your data catalogue. This processing is augmented by Pinecone’s intelligence tools. Such information may include personal information. We ask that our Customers not provide us with information that may be deemed sensitive under applicable laws (including, without limitation, financial information, health information, and information about children).
+Information provided to us by authorized users in connection with their use of the Hosted Services 
+. We collect information about the Customer’s “authorized users” — individuals (typically personnel) that Customer authorizes to create an account or use an API key to access the Hosted Services. This may include personal information that authorized users provide when they: 
+Register for an account or create a user profile (such as first and last name, email address, physical address, telephone number(s), fax number, employer name, department and job title, device ID, and profile picture); 
+Upload content to the Hosted Services; and 
+Contact customer support or otherwise correspond with us by phone, email, or other means.
+Information collected about authorized users 
+. We may collect information about authorized users, such as: 
+Information provided to us by the Customer about its authorized users. This may include business contact information, such as name, email address, and phone number.
+Information about authorized users’ use of the Hosted Services. This may include information about authorized users’ use of the Hosted Services, including computer or mobile device operating system type and version number, manufacturer and model, device identifier, browser type, screen resolution, IP address, general location information such as city, state or geographic area; and information about authorized users’ use of and actions on the Hosted Services, such as pages you viewed, how much time was spent on a page, navigation paths between pages, information about activity on a page, access times, and length of access. This information is collected using cookies and similar technologies.
+How We Use Information 
+We use the information we collect at the instruction of the relevant Customer and in accordance with the relevant Customer agreement, to provide the Hosted Services and for related purposes, including to: 
+enable authorized users to access and use the Hosted Services; 
+provide information about the Hosted Services, such as important updates or changes to the Hosted Services and security alerts; 
+customize the end user experience, such as personalizing content and features to better match interests and preferences; 
+derive anonymized, aggregated or de-identified data for our subsequent use; 
+measure performance of and improve the Hosted Services and develop new products and Hosted Services; and 
+respond to inquiries, complaints, and requests for customer support.
+We may also use personal information as we believe necessary or appropriate to (a) comply with applicable law; (b) enforce the terms and conditions that govern the Service; (c) protect our rights, privacy, safety or property, and/or that of you or others; and (d) protect, investigate and deter against fraudulent, harmful, unauthorized, unethical or illegal activity.
+How We Share Information 
+We share the information we collect: 
+with the relevant Customer from which we obtained the information; 
+with such third parties as the relevant Customer may direct; and 
+with third-party service providers that help us manage and improve the Hosted Services.
+We may also share personal information with government, law enforcement officials or private parties as required by law, when we believe such disclosure is necessary or appropriate to (a) comply with applicable law; (b) enforce the terms and conditions that govern the Hosted Services; (c) protect our rights, privacy, safety or property, and/or that of you or others; and (d) protect, investigate and deter against fraudulent, harmful, unauthorized, unethical or illegal activity.
+We may sell, transfer or otherwise share some or all of Pinecone’s business or assets, including personal information that we process as part of the Hosted Services, in connection with a business transaction (or potential business transaction) such as a merger, consolidation, acquisition, reorganization or sale of assets or in the event of bankruptcy.
+Information Security 
+Pinecone uses physical, electronic, and procedural safeguards designed to protect personal information from loss, theft, misuse, and unauthorized access, disclosure, alteration, and destruction. We cannot, however, guarantee that any safeguards or security measures will be sufficient to prevent a security problem. We recommend that our Customers take steps to protect against unauthorized access to any devices or networks used to access the Hosted Services. See the relevant Customer agreement for additional information regarding Pinecone’s information security practices.
+Data Subject Rights 
+The relevant Customer is the data owner/data controller of authorized users’ or others’ personal information processed through the Hosted Services. As the data owner/data controller, the relevant Customer is responsible for receiving and responding to authorized users’ and others’ requests to exercise any rights afforded to them under applicable data protection law. Pinecone will assist Customers in responding to such requests as set forth in the relevant Customer agreement.
+Cross Border Data Transfer 
+Pinecone may transfer personal information collected and processed through the Hosted Services outside of the country from which it originated, including to the United States. See the relevant Customer agreement for additional information regarding how Pinecone safeguards the personal information it transfers across borders.
+Data Retention 
+Pinecone retains personal information for as long as necessary to (a) provide the Hosted Services; (b) comply with legal obligations; (c) resolve disputes; and (d) enforce the terms of the relevant Customer agreement. See the relevant Customer agreement for additional information regarding Pinecone’s data retention practices.
+Third-Party Products and Hosted Services 
+The Hosted Services may integrate with or enable access to third-party tools. Third-party tools registered, installed, or accessed by authorized users are governed by those third-party providers’ privacy notices. Please review those notices carefully, as Pinecone does not control and cannot be responsible for these providers’ privacy or information security practices.
+Changes to this Privacy Statement 
+Pinecone reserves the right to modify this Product Privacy Statement at any time. Similar to Pinecone’s Hosted Services, laws, regulations and industry standards may evolve which may make changes to this Product Privacy Statement appropriate. Pinecone will post the changes to this page. Pinecone encourages you to review the Product Privacy Statement to stay informed. In accordance with applicable law, Pinecone will notify you of any material changes in its collection, use, or disclose of your information by posting a notice on its website. Any material changes to this Product Privacy Statement will be effective thirty (30) calendar days following notice of the changes on the website. These changes will be effective immediately for new users of the Hosted Services. If you object to any such changes, you must notify Pinecone prior to the effective date of such changes that you wish to deactivate your account. Continued use of the Hosted Services following the effective date of such changes indicates your agreeing to such changes.
+Contact Us 
+If you have any question about this Product Privacy Statement, you can contact us at 
+privacy@pinecone.io 
+or mail us at: 
+Pinecone Systems, Inc 
+548 Market St 
+PMB 19327 
+San Francisco, CA 94104-5401 
+What will you build?
+Upgrade your search or recommendation systems with just a few lines of code, or 
+contact us 
+ for help.
+Create Account 
+Pricing 
+Docs 
+Learn 
+Company 
+Contact 
+Careers 
+Support 
+© Pinecone Systems, Inc. | San Francisco, CA | 
+Terms 
+| 
+Privacy 
+| 
+Product Privacy 
+| 
+Cookies 
+| 
+Trust & Security 
+| 
+System Status 
+Pinecone is a registered trademark of Pinecone Systems, Inc.
+Don’t fill this out if you’re human: 
+Get product and article updates 
+ 
+ 
+ 
+ 
+ 
+ 
+Get Updates 
+Subscribed successfully.
+Failed to submit.

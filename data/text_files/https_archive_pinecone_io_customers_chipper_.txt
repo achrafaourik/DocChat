@@ -1,0 +1,93 @@
+Chipper Cash thwarts fraudsters in real-time with Pinecone | Pinecone 
+Log In 
+Sign Up Free 
+Sign In 
+Create Account 
+ 
+ 
+Toggle menu 
+Chipper Cash thwarts fraudsters in real-time with Pinecone 
+Chipper Cash 
+ is a financial technology company on a mission to unlock barriers to banking in Africa. Providing a frictionless way to send and receive money cross-border and offering financial inclusivity, Chipper Cash has revolutionized money transfers for more than five million customers in Africa and beyond.
+While the user base is growing quickly, Chipper Cash is constantly looking for ways to acquire new users and drive more transactions. One way they do this is through paid promotions for new users. For example, “Buy stocks worth at least $2 before the end of the week. Get a ₦500 reward!” 
+While these promos attract many new users, they also incentivize people looking for loopholes to create multiple accounts and maliciously access the promos. The company knew they needed a faster, more reliable way to verify new users and block duplicate users in real-time to prevent fraudulent sign-ups.
+The challenge: Catching and preventing fraudsters in the act 
+Chipper Cash used a third-party service to provide security checks and verify identities of new users. Not only did these checks help identify duplicate accounts, but they also checked for fake or stolen documents (e.g. government-issued IDs) as part of their KYC checks . This solution worked well at first, but as the volume of users grew across the app’s seven supported countries, the verification process became a bottleneck — especially during promos.
+This led to an uptick in malicious users creating multiple accounts and “gaming” the system. Incentivized by the new-user promos, these users would set up many fake accounts, resulting in delays of up to 20 minutes to validate their sign-ups. This not only created a poor experience for legitimate new users, but it also gave the fraudsters time to redeem new-user promos before they were caught.
+During a six month period, Chipper Cash lost 16% of their promo budget to fraudulent sign-ups — whether duplicates or users with fake or stolen government IDs.​​ They also had to stop many promos earlier than planned, losing out on the opportunity to acquire more users.
+The solution: Detecting duplicate sign-ups in real-time with Pinecone 
+Samee Zahid, Director of Engineering at Chipper Cash, took the lead in building an alternative, AI-based solution for faster in-app identity verification. The team wanted a solution with minimal latency at scale and lower overall costs. Their key idea was to use visual search to check if the selfie of a new users closely matches the selfie of any existing user. They learned they could accomplish this with an AI model (for turning images into 
+embeddings 
+) and a 
+vector database 
+ (for storing and searching through embeddings by similarity).
+The engineering team built a proof-of-concept using an open-source database with basic vector search functionality, and a ConvNet model for turning selfie photos into embeddings. Once the database was loaded with embeddings of existing user selfies, they could embed the selfie of each new user and search the database for similar embeddings. A high similarity score between the new selfie and an existing selfie would indicate the selfies are of the same person, meaning a duplicate account.
+While the concept worked remarkably well, it became clear that making this work at low latencies and at their scale would require incredibly tedious and time-consuming management of the database. Zahid decided to look for a managed alternative that could provide performance at scale with minimal overhead. The search started and ended with Pinecone.
+We have a high bar in terms of security and latency for our users. Many third-party solutions don’t meet our requirements, so we typically opt to build or host in-house. Pinecone proved to deliver so much value — with reduced overhead and ultra-low latencies at scale — we didn’t need to do much convincing to move forward.
+Supported by Pinecone, Chipper Cash’s new identity verification solution is: 
+Built for real-time 
+: With Pinecone, Chipper Cash was able to drastically reduce the amount of time needed to verify new sign-ups, especially during peak periods. This allows them to retrieve similar selfies of a user in under 200 milliseconds so they can catch and prevent fraudsters without slowing down legitimate new users.
+Optimizing spend 
+: With real-time verification, there are 10x fewer duplicate sign-up attempts. This means more money is going towards acquiring legitimate new customers — the intended audience — instead of fraudsters and bots. Chipper Cash can now allocate budget spend in a more effective way to help them meet their mission.
+Highly scalable 
+: Supporting billions of vectors at a time, Pinecone provides Chipper Cash with the long-term memory needed to continue scaling and adding context (i.e. selfies) to their dataset. The more context the application has, the faster and more accurate is the verification process.
+Zahid and his team were able to fully implement Pinecone into their stack within a matter of weeks. Using Snowflake as a data warehouse, they generate embeddings using their Facial Similarity Service (FSS), and then store them in Pinecone. From there, FSS queries Pinecone to return the top three matches before querying the Chipper Backend to return match likelihood along with any other helpful metadata. See the full architectural diagram below for reference: 
+Zahid summarized the overall process of implementing Pinecone: 
+It took us less than a month to build our new in-house facial verification system. We have a real-time, scalable, and secure system thanks to Pinecone. End-to-end latencies for the entire system dropped from up to 20 minutes previously to less than 2 seconds now, with Pinecone doing the search in under 200ms.
+Since launching the facial verification system with Pinecone, Chipper Cash has seen the number of fraudulent sign-ups decrease by 10x. The below graph shows the results for their user base in Uganda, which is representative of Chipper Cash’s other markets.
+The results: Catching more fraudulent sign ups, preventing losses 
+Chipper Cash has seen dramatic improvements in their identify verification workflow since launching Pinecone into production: 
+New users’ selfies are verified with over 95% accuracy in less than 2 seconds.
+Promo budget gets spent efficiently to acquire legitimate new customers.
+Fraudulent sign-ups have dropped by 10x across all markets.
+Chipper Cash now provides a better user experience by enabling legitimate users to sign up and redeem promos quickly. And with better screening of fraudulent sign-ups, they can run longer, more effective promotions. Motivated by this success, Zahid and his team are now exploring other ways to make meaningful business impact with AI and the Pinecone vector database.
+Gibbs Cullen 
+Senior Product Marketing Manager 
+Contents: 
+The challenge: Catching and preventing fraudsters in the act 
+The solution: Detecting duplicate sign-ups in real-time with Pinecone 
+The results: Catching more fraudulent sign ups, preventing losses 
+Share: 
+Twitter 
+ 
+ 
+Facebook 
+ 
+ 
+Hacker News 
+What will you build?
+Upgrade your search or recommendation systems with just a few lines of code, or 
+contact us 
+ for help.
+Create Account 
+Pricing 
+Docs 
+Learn 
+Company 
+Contact 
+Careers 
+Support 
+© Pinecone Systems, Inc. | San Francisco, CA | 
+Terms 
+| 
+Privacy 
+| 
+Product Privacy 
+| 
+Cookies 
+| 
+Trust & Security 
+| 
+System Status 
+Pinecone is a registered trademark of Pinecone Systems, Inc.
+Don’t fill this out if you’re human: 
+Get product and article updates 
+ 
+ 
+ 
+ 
+ 
+ 
+Get Updates 
+Subscribed successfully.
+Failed to submit.

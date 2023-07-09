@@ -1,0 +1,541 @@
+Pricing | Pinecone 
+Log In 
+Sign Up Free 
+Sign In 
+Create Account 
+ 
+ 
+Toggle menu 
+Start free, scale effortlessly.
+Pinecone runs on fully managed infrastructure that scales with you.
+Available on 
+AWS Marketplace 
+and 
+Google Cloud Marketplace 
+How We Bill 
+For each existing index, hourly billing is determined by the 
+per-hour-price 
+Varies by plan, pod type, pod size, and cloud region. Try our pricing estimator below.
+of a pod multiplied by the 
+number of pods 
+Multiplied by number of replicas, if applicable 
+ the index uses. You will be sent an invoice at the end of the month for the total minutes your indexes have been running, regardless of activity. 
+Reach out 
+ to an expert if you have any questions.
+Pods 
+An index is made up of pods, which are units of cloud resources (vCPU, RAM, disk) that provide storage and compute for each index. Choose the 
+pod type 
+ that works best for your use case.
+Indexes 
+Indexes store your vector embeddings and metadata. Each index uses at least one pod, but you can add more to increase storage capacity.
+Scaling 
+As you grow, you can scale storage capacity by increasing your pod sizes. You can also increase or decrease throughput when needed, by adding 
+replicas 
+ to an index.
+Pricing Plans 
+Try the pricing calculator 
+Starter 
+Free 
+Limited to one index and one project.
+No credit card required.
+Get Started 
+ 
+View pricing details 
+For trying out and for small applications.
+Hardware: 
+Single starter pod 
+Features: 
+Single project 
+Shared environment 
+Single Availability Zone 
+Community Support: 
+Community Support 
+Standard 
+starting at 
+$70/month 
+Estimated for one index on one s1 pod running for 30 days at $0.096/hour 
+Get Started 
+ 
+View pricing details 
+For production applications at any scale.
+Hardware: 
+Any number of pods and replicas 
+Zero-downtime scaling 
+Features: 
+Save vector data in Collections ($0.025/GB/month) 
+Multiple projects and users 
+Choose your cloud region 
+Single availability zone 
+Access to a free Starter pod 
+Standard Support: 
+Email support during business hours 
+Up to 2 technical contacts 
+Response time SLA 
+Enterprise 
+starting at 
+$104/month 
+Estimated for one index on one s1 pod running for 30 days at $0.144/hour 
+Get Started 
+ 
+View pricing details 
+For mission-critical production applications.
+Hardware: 
+Any number of pods and replicas 
+Zero-downtime scaling 
+Features: 
+Everything in Standard 
+Prometheus metrics 
+Multiple availability zones 
+Single sign-on 
+Multiple payment options 
+Premium Support: 
+24/7/365 dedicated support 
+Up to 4 technical contacts 
+Response time SLA 
+Uptime SLA (99.9%) 
+Enterprise Dedicated: 
+Everything in Enterprise, deployed in a 
+single-tenant VPC environment in the region of your choice.
+ 
+Contact us 
+ for details and pricing.
+Pod Pricing on Standard Plan 
+Pods are billed by the minute with monthly invoices 
+ 
+ 
+ 
+Google Cloud Platform 
+ 
+ 
+ 
+ 
+ 
+Amazon Web Services 
+Pod Type 
+Pod Size 
+Base Price 
+Approximate Capacity 
+ 
+estimated for 768 dimensional embeddings without metadata.
+s1 - storage optimized 
+s1 - storage optimized 
+x1 
+$0.0960/hour 
+5 million vectors 
+x2 
+$0.1920/hour 
+10 million vectors 
+x4 
+$0.3840/hour 
+20 million vectors 
+x8 
+$0.7680/hour 
+40 million vectors 
+p1 - performance optimized 
+p1 - performance optimized 
+x1 
+$0.0960/hour 
+1 million vectors 
+x2 
+$0.1920/hour 
+2 million vectors 
+x4 
+$0.3840/hour 
+4 million vectors 
+x8 
+$0.7680/hour 
+8 million vectors 
+p2 - 2nd gen performance 
+p2 - 2nd gen performance 
+x1 
+$0.1440/hour 
+1 million vectors 
+x2 
+$0.2880/hour 
+2 million vectors 
+x4 
+$0.5760/hour 
+4 million vectors 
+x8 
+$1.1520/hour 
+8 million vectors 
+Pod Type 
+Pod Size 
+Base Price 
+Approximate Capacity 
+ 
+estimated for 768 dimensional embeddings without metadata.
+s1 - storage optimized 
+s1 - storage optimized 
+x1 
+$0.1110/hour 
+5 million vectors 
+x2 
+$0.2220/hour 
+10 million vectors 
+x4 
+$0.4440/hour 
+20 million vectors 
+x8 
+$0.8880/hour 
+40 million vectors 
+p1 - performance optimized 
+p1 - performance optimized 
+x1 
+$0.1110/hour 
+1 million vectors 
+x2 
+$0.2220/hour 
+2 million vectors 
+x4 
+$0.4440/hour 
+4 million vectors 
+x8 
+$0.8880/hour 
+8 million vectors 
+p2 - 2nd gen performance 
+p2 - 2nd gen performance 
+x1 
+$0.1665/hour 
+1 million vectors 
+x2 
+$0.3330/hour 
+2 million vectors 
+x4 
+$0.6660/hour 
+4 million vectors 
+x8 
+$1.3320/hour 
+8 million vectors 
+Pod Pricing on Enterprise Plan 
+Pods are billed by the minute with monthly invoices 
+ 
+ 
+ 
+Google Cloud Platform 
+ 
+ 
+ 
+ 
+ 
+Amazon Web Services 
+Pod Type 
+Pod Size 
+Base Price 
+Approximate Capacity 
+ 
+estimated for 768 dimensional embeddings without metadata.
+s1 - storage optimized 
+s1 - storage optimized 
+x1 
+$0.1440/hour 
+5 million vectors 
+x2 
+$0.2880/hour 
+10 million vectors 
+x4 
+$0.5760/hour 
+20 million vectors 
+x8 
+$1.1520/hour 
+40 million vectors 
+p1 - performance optimized 
+p1 - performance optimized 
+x1 
+$0.1440/hour 
+1 million vectors 
+x2 
+$0.2880/hour 
+2 million vectors 
+x4 
+$0.5760/hour 
+4 million vectors 
+x8 
+$1.1520/hour 
+8 million vectors 
+p2 - 2nd gen performance 
+p2 - 2nd gen performance 
+x1 
+$0.2160/hour 
+1 million vectors 
+x2 
+$0.4320/hour 
+2 million vectors 
+x4 
+$0.8640/hour 
+4 million vectors 
+x8 
+$1.7280/hour 
+8 million vectors 
+Pod Type 
+Pod Size 
+Base Price 
+Approximate Capacity 
+ 
+estimated for 768 dimensional embeddings without metadata.
+s1 - storage optimized 
+s1 - storage optimized 
+x1 
+$0.1665/hour 
+5 million vectors 
+x2 
+$0.3330/hour 
+10 million vectors 
+x4 
+$0.6660/hour 
+20 million vectors 
+x8 
+$1.3320/hour 
+40 million vectors 
+p1 - performance optimized 
+p1 - performance optimized 
+x1 
+$0.1665/hour 
+1 million vectors 
+x2 
+$0.3330/hour 
+2 million vectors 
+x4 
+$0.6660/hour 
+4 million vectors 
+x8 
+$1.3320/hour 
+8 million vectors 
+p2 - 2nd gen performance 
+p2 - 2nd gen performance 
+x1 
+$0.24975/hour 
+1 million vectors 
+x2 
+$0.4995/hour 
+2 million vectors 
+x4 
+$0.9990/hour 
+4 million vectors 
+x8 
+$1.9980/hour 
+8 million vectors 
+× 
+SLA on Standard Plan 
+× 
+Type 
+Max Response Time 
+Sev-1 
+ 
+Production system is down or is severely impacted such that 
+routine operation is impossible.
+4 hours 
+Sev-2 
+ 
+Production issue where system is functional but offers service 
+in degraded or restricted capacity.
+1 business day 
+Sev-3 
+ 
+Production system has minor impact or has issue in 
+development. 
+1 business day 
+Sev-4 
+ 
+No production impact, questions, or requests for a 
+feature. 
+2 business days 
+SLA on Enterprise Plan 
+× 
+Type 
+Max Response Time 
+Sev-1 
+ 
+Production system is down or is severely impacted such that 
+routine operation is impossible.
+1 hour 
+Sev-2 
+ 
+Production issue where system is functional but offers service 
+in degraded or restricted capacity.
+4 hours 
+Sev-3 
+ 
+Production system has minor impact or has issue in 
+development. 
+1 business day 
+Sev-4 
+ 
+No production impact, questions, or requests for a 
+feature. 
+2 business days 
+Questions? We’re here to help.
+Reach out to get assistance with configuring your index or to ask questions about features and pricing.
+Contact Us 
+Price Estimator 
+You will be billed per minute from the moment your index is live, 
+with monthly invoices.
+Choose pricing plan 
+ 
+ 
+Standard 
+ 
+ 
+Enterprise 
+Choose cloud provider 
+ 
+ 
+Google Cloud Platform 
+ 
+ 
+Amazon Web Services 
+Choose pod type 
+ 
+ 
+Refer to 
+ 
+this guide 
+ 
+or reach out to 
+customer support 
+for help 
+with your specific use case.
+ 
+ 
+s1 — storage optimized 
+ 
+ 
+p1 — performance optimized 
+ 
+ 
+p2 — 2nd gen performance 
+Choose number of pods 
+ 
+ 
+Determine how many pods you need based on the storage capacity 
+for your 
+ 
+pod type.
+s1 - 5M vectors of 768 dimensions 
+p1 - 1M vectors of 
+768 dimensions 
+p2 - 1M vectors of 768 dimensions 
+ 
+Advanced Configuration 
+You also have the option to configure the pod size and number of 
+replicas, both of which you will be able to change even after 
+creating your index, to support scaling.
+Choose pod size 
+ 
+ 
+Increasing the pod size will allow you to store more embeddings as you scale.
+ 
+ 
+x1 
+ 
+ 
+x2 
+ 
+ 
+x4 
+ 
+ 
+x8 
+Choose replica count 
+ 
+ 
+Throughput scales linearly with replica count, supporting 
+performance needs.
+For an index on the Standard plan, deployed on GCP, made up of 1 s1.x1 
+pod(s) with 1 replica(s): 
+$ 
+70 
+/month 
+ 
+ 
+or $ 
+0.096 
+/hour for 30 days 
+Contact Sales 
+For information on enterprise use cases, bulk discounts, or cost optimization, 
+reach out to sales 
+. 
+Frequently Asked Questions 
+How many pods will I need?
+Since each pod is a bundle of hardware resources (vCPU, RAM, and disk), the required number of pods is affected by multiple factors such as data size (volume, dimensionality, and metadata), metadata cardinality, and desired latency or throughput. We strongly recommend testing with 
+your own data 
+on different pod types and number of pods, and following our 
+tips for performance tuning 
+. 
+As a 
+very rough 
+ starting guideline: each s1 pod fits 5M 768-dim vectors, each p1 pod fits 1M 768-dim vectors, and each p2 pod fits 1M 768-dim vectors.
+You can also 
+contact us 
+ for help with sizing and testing.
+If I don't run any queries, will I still be charged?
+If you have any running indexes, you will be charged for the pods they use whether or not the index is receiving queries.
+An s1 pod can hold 5M embeddings, but I have 20M. Can I still use Pinecone?
+Yes. On a paid plan you can have indexes running on more than one pod. Add as many pods as you need to achieve your desired capacity and performance.
+Can I increase storage capacity after creating an index?
+Yes, you can 
+vertically scale 
+ the size of the pods in an index by factors of x2, x4, and x8. This can be done even after an index is created.
+You also have the option to save your current index as a collection and build another index from that collection.
+Do I need a separate index for each of my multi-tenant customers?
+No, you can store your customers' data in one index and separate them by 
+namespace 
+or using 
+metadata fields 
+. 
+Do you offer discounts for startups or non-profits?
+There is no discount program for startups or non-profits. Our free plan is sufficient for many small and non-critical applications, and our paid plans are designed to scale with you as you grow.
+How secure is Pinecone?
+Pinecone is SOC2 Type II compliant, and we take security seriously for all users on all plans. Read about 
+our security practices 
+. 
+Where is the user license or the terms of service?
+Users accept the 
+End-User License Agreement 
+ when creating an account.
+How do I cancel or downgrade?
+You can manage your subscription directly in the console. If you attempt to downgrade to Starter (Free) while exceeding the limits of the Starter plan, you will first need to delete projects or indexes until you are within the limits.
+If you upgraded your account through AWS or GCP marketplace, you will need to downgrade it through the marketplace as well.
+What’s new with the Starter (free) plan?
+We’re making the following changes to the free plan effective April 26th. Existing projects created before April 26th on free accounts will not be affected by these changes: 
+- Free plan indexes will now support ~100k 1536-dimensional embeddings with metadata. All users will have access to a single free project and index within a free tier environment.
+- Users on the free plan will maintain their free project after upgrading.
+- Users no longer need to choose a pod type and configure their free index.
+Projects on paid plans are not affected. See the 
+announcement 
+ for more information.
+What if I created a project on the free plan before April 26, 2023?
+Effective April 26th, any new project created on a free account will be subject to the 
+updated free plan 
+. Existing projects created before April 26th on free accounts will not be affected by these changes. Projects on paid plans are not affected.
+Pricing 
+Docs 
+Learn 
+Company 
+Contact 
+Careers 
+Support 
+© Pinecone Systems, Inc. | San Francisco, CA | 
+Terms 
+| 
+Privacy 
+| 
+Product Privacy 
+| 
+Cookies 
+| 
+Trust & Security 
+| 
+System Status 
+Pinecone is a registered trademark of Pinecone Systems, Inc.
+Don’t fill this out if you’re human: 
+Get product and article updates 
+ 
+ 
+ 
+ 
+ 
+ 
+Get Updates 
+Subscribed successfully.
+Failed to submit.

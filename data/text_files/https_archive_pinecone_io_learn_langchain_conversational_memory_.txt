@@ -1,0 +1,288 @@
+Chatbot Memory with Langchain | Pinecone 
+Log In 
+Sign Up Free 
+Sign In 
+Create Account 
+ 
+ 
+Toggle menu 
+Conversational Memory for LLMs with Langchain 
+Conversational memory is how a chatbot can respond to multiple queries in a chat-like manner. It enables a coherent conversation, and without it, every query would be treated as an entirely independent input without considering past interactions.
+ 
+ 
+The LLM with and without conversational memory. The blue boxes are user prompts and in grey are the LLMs responses. Without conversational memory (right), the LLM cannot respond using knowledge of previous interactions.
+The memory allows a 
+L 
+arge 
+L 
+anguage 
+M 
+odel (LLM) to remember previous interactions with the user. By default, LLMs are 
+stateless 
+ — meaning each incoming query is processed independently of other interactions. The only thing that exists for a stateless agent is the current input, nothing else.
+There are many applications where remembering previous interactions is very important, such as chatbots. Conversational memory allows us to do that.
+There are several ways that we can implement conversational memory. In the context of [LangChain](/learn/langchain-intro/, they are all built on top of the 
+. 
+ConversationChain 
+We can start by initializing the 
+. We will use OpenAI’s 
+as the LLM, but other models like 
+ can be used.
+We can see the prompt template used by the 
+like so: 
+In[8]: 
+Out[8]: 
+Here, the prompt primes the model by telling it that the following is a conversation between a human (us) and an AI ( 
+). The prompt attempts to reduce 
+hallucinations 
+(where a model makes things up) by stating: 
+This can help but does not solve the problem of hallucinations — but we will save this for the topic of a future chapter.
+Don't fill this out if you're human: 
+Get an update when we release future chatpers!
+ 
+ 
+ 
+ 
+Submit 
+ 
+ 
+Subscribed successfully.
+Failed to submit.
+Following the initial prompt, we see two parameters; 
+and 
+. The 
+is where we’d place the latest human query; it is the input entered into a chatbot text box: 
+The 
+ is where conversational memory is used. Here, we feed in information about the conversation history between the human and AI.
+These two parameters — 
+and 
+ — are passed to the LLM within the prompt template we just saw, and the output that we (hopefully) return is simply the predicted continuation of the conversation.
+Forms of Conversational Memory 
+We can use several types of conversational memory with the 
+. They modify the text passed to the 
+parameter. 
+ConversationBufferMemory 
+(Follow along with our 
+Jupyter notebooks 
+) 
+The 
+is the most straightforward conversational memory in LangChain. As we described above, the raw input of the past conversation between the human and AI is passed — in its raw form — to the 
+parameter. 
+In[11]: 
+In[32]: 
+Out[32]: 
+We return the first response from the conversational agent. Let’s continue the conversation, writing prompts that the LLM can only answer 
+if 
+it considers the conversation history. We also add a 
+ function so we can see how many tokens are being used by each interaction.
+In[6]: 
+In[33]: 
+Out[33]: 
+In[34]: 
+Out[34]: 
+In[35]: 
+Out[35]: 
+In[36]: 
+Out[36]: 
+The LLM can clearly remember the history of the conversation. Let’s take a look at 
+how 
+this conversation history is stored by the 
+: 
+In[37]: 
+Out[37]: 
+We can see that the buffer saves every interaction in the chat history directly. There are a few pros and cons to this approach. In short, they are: 
+Pros 
+Cons 
+Storing everything gives the LLM the maximum amount of information 
+More tokens mean slowing response times and higher costs 
+Storing everything is simple and intuitive 
+Long conversations cannot be remembered as we hit the LLM token limit ( 
+tokens for 
+and 
+) 
+The 
+ is an excellent option to get started with but is limited by the storage of every interaction. Let’s take a look at other options that help remedy this.
+ConversationSummaryMemory 
+Using 
+, we very quickly use 
+a lot 
+ of tokens and even exceed the context window limit of even the most advanced LLMs available today.
+To avoid excessive token usage, we can use 
+. As the name would suggest, this form of memory 
+summarizes 
+the conversation history before it is passed to the 
+parameter. 
+We initialize the 
+with the summary memory like so: 
+When using 
+, we need to pass an LLM to the object because the summarization is powered by an LLM. We can see the prompt used to do this here: 
+In[19]: 
+Out[19]: 
+Using this, we can summarize every new interaction and append it to a “running summary” of all past interactions. Let’s have another conversation utilizing this approach.
+In[40]: 
+Out[40]: 
+In[41]: 
+Out[41]: 
+In[42]: 
+Out[42]: 
+In[43]: 
+Out[43]: 
+In[44]: 
+Out[44]: 
+In this case the summary contains enough information for the LLM to “remember” our original aim. We can see this summary in it’s raw form like so: 
+In[45]: 
+Out[45]: 
+The number of tokens being used for this conversation is greater than when using the 
+, so is there any advantage to using 
+ over the buffer memory?
+ 
+ 
+Token count (y-axis) for the buffer memory vs. summary memory as the number of interactions (x-axis) increases.
+For longer conversations, yes. 
+Here 
+, we have a longer conversation. As shown above, the summary memory initially uses far more tokens. However, as the conversation progresses, the summarization approach grows more slowly. In contrast, the buffer memory continues to grow linearly with the number of tokens in the chat.
+We can summarize the pros and cons of 
+as follows: 
+Pros 
+Cons 
+Shortens the number of tokens for 
+long 
+conversations. 
+Can result in higher token usage for smaller conversations 
+Enables much longer conversations 
+Memorization of the conversation history is wholly reliant on the summarization ability of the intermediate summarization LLM 
+Relatively straightforward implementation, intuitively simple to understand 
+Also requires token usage for the summarization LLM; this increases costs (but does not limit conversation length) 
+Conversation summarization is a good approach for cases where long conversations are expected. Yet, it is still fundamentally limited by token limits. After a certain amount of time, we still exceed context window limits.
+ConversationBufferWindowMemory 
+The 
+acts in the same way as our earlier 
+“buffer memory” 
+but adds a 
+window 
+to the memory. Meaning that we only keep a given number of past interactions before 
+“forgetting” 
+them. We use it like so: 
+In this instance, we set 
+— this means the window will remember the single latest interaction between the human and AI. That is the latest human response and the latest AI response. We can see the effect of this below: 
+In[61]: 
+Out[61]: 
+In[62]: 
+Out[62]: 
+In[63]: 
+Out[63]: 
+In[64]: 
+Out[64]: 
+In[65]: 
+Out[65]: 
+By the end of the conversation, when we ask 
+, the answer to this was contained in the human response 
+three 
+interactions ago. As we only kept the most recent interaction ( 
+), the model had forgotten and could not give the correct answer.
+We can see the effective “memory” of the model like so: 
+In[66]: 
+In[67]: 
+Out[67]: 
+Although this method isn’t suitable for remembering distant interactions, it is good at limiting the number of tokens being used — a number that we can increase/decrease depending on our needs. For the 
+longer conversation 
+used in our earlier comparison, we can set 
+and reach ~1.5K tokens per interaction after 27 total interactions: 
+ 
+ 
+Token count including the 
+at 
+and 
+. 
+If we only need memory of recent interactions, this is a great option. However, for a mix of both distant and recent interactions, there are other options.
+ConversationSummaryBufferMemory 
+The 
+is a mix of the 
+and the 
+. It summarizes the earliest interactions in a conversation while maintaining the 
+most recent tokens in their conversation. It is initialized like so: 
+When applying this to our earlier conversation, we can set 
+ to a small number and yet the LLM can remember our earlier “aim”.
+This is because that information is captured by the “summarization” component of the memory, despite being missed by the “buffer window” component.
+Naturally, the pros and cons of this component are a mix of the earlier components on which this is based.
+Pros 
+Cons 
+Summarizer means we can remember distant interactions 
+Summarizer increases token count for shorter conversations 
+Buffer prevents us from missing information from the most recent interactions 
+Storing the raw interactions — even if just the most recent interactions — increases token count 
+Although requiring more tweaking on what to summarize and what to maintain within the buffer window, the 
+does give us plenty of flexibility and is the only one of our memory types (so far) that allows us to remember distant interactions 
+and 
+ store the most recent interactions in their raw — and most information-rich — form.
+ 
+ 
+Token count comparisons including the 
+type with 
+values of 
+and 
+. 
+We can also see that despite including a summary of past interactions 
+and 
+the raw form of recent interactions — the increase in token count of 
+ is competitive with other methods.
+Other Memory Types 
+The memory types we have covered here are great for getting started and give a good balance between remembering as much as possible and minimizing tokens.
+However, we have other options — particularly the 
+and 
+. We’ll give these different forms of memory the attention they deserve in upcoming chapters.
+That’s it for this introduction to conversational memory for LLMs using LangChain. As we’ve seen, there are plenty of options for helping 
+stateless 
+LLMs interact as if they were in a 
+stateful 
+ environment — able to consider and refer back to past interactions.
+As mentioned, there are other forms of memory we can cover. We can also implement our own memory modules, use multiple types of memory within the same chain, combine them with agents, and much more. All of which we will cover in future chapters.
+Next Chapter: 
+Fixing Hallucination with Knowledge Bases 
+Comments 
+LangChain AI Handbook 
+Chapters: 
+LangChain: Introduction and Getting Started 
+Prompt Engineering and LLMs with Langchain 
+Chatbot Memory with Langchain 
+ConversationChain 
+Forms of Conversational Memory 
+Fixing Hallucination with Knowledge Bases 
+Superpower LLMs with Conversational Agents in LangChain 
+Building Custom Tools for LLM Agents 
+What will you build?
+Upgrade your search or recommendation systems with just a few lines of code, or 
+contact us 
+ for help.
+Create Account 
+Pricing 
+Docs 
+Learn 
+Company 
+Contact 
+Careers 
+Support 
+© Pinecone Systems, Inc. | San Francisco, CA | 
+Terms 
+| 
+Privacy 
+| 
+Product Privacy 
+| 
+Cookies 
+| 
+Trust & Security 
+| 
+System Status 
+Pinecone is a registered trademark of Pinecone Systems, Inc.
+Don’t fill this out if you’re human: 
+Get product and article updates 
+ 
+ 
+ 
+ 
+ 
+ 
+Get Updates 
+Subscribed successfully.
+Failed to submit.

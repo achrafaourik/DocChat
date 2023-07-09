@@ -1,0 +1,322 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+🧪 Usage Guide | Chroma 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Skip to main content 
+Chroma 
+Python 
+Javascript 
+Discord 
+@trychroma 
+GitHub 
+🏡 Home 
+🔑 Getting Started 
+🧪 Usage Guide 
+🧬 Embeddings 
+👽 About 
+📖 API Cheatsheet 
+🔌 Integrations 
+☁️ Deployment 
+📏 Telemetry 
+🛣️ Roadmap 
+🔍 Troubleshooting 
+⚪️ JS Docs 
+⚪️ Python Docs 
+🧪 Usage Guide 
+On this page 
+🧪 Usage Guide 
+Select a language 
+Python 
+JavaScript 
+Initiating a persistent Chroma client 
+​ 
+Python 
+JavaScript 
+You can configure Chroma to save and load from your local machine. Data will be persisted on exit and loaded on start (if it exists). This is useful for many experimental / prototyping workloads, limited by your machine's memory.
+The 
+ is where Chroma will store its database files on disk, and load them on start.
+Use a single client at-a-time 
+Having many in-memory clients that are loading and saving to the same path can cause strange behavior including data deletion. As a general practice, create an in-memory Chroma client once in your application, and pass it around instead of creating many clients.
+Jupyter Notebooks 
+In a normal python program, 
+will happening automatically if you set it. But in a Jupyter Notebook you will need to 
+manually 
+call 
+. 
+Connecting to the backend 
+To connect with the JS client, you must connect to a backend running Chroma. See 
+ for how to do this. 
+The JS client talks to a chroma server backend. This can run on your local computer via 
+ (see below) or be easily deployed to AWS.
+Python 
+JavaScript 
+The client object has a few useful convenience methods.
+The client object has a few useful convenience methods.
+Running Chroma in client/server mode 
+​ 
+Python 
+JavaScript 
+Chroma can also be configured to use an on-disk database, useful for larger data which doesn't fit in memory. To run Chroma in client server mode, run the docker container: 
+Then update your chroma client to point at the docker container. Default: 
+That's it! Chroma's API will run in 
+ mode with just this change.
+Using the python http-only client 
+​ 
+If you are running chroma in client-server mode. You may not require the full Chroma library and instead only the client library on your client machine. In this case, you can install the 
+ package. This package is a lightweight HTTP client for the server with a minimal dependency footprint.
+Note that the 
+package is a subset of the full Chroma library and does not include all the dependencies. If you want to use the full Chroma library, you can install the 
+ package instead. Most importantly, there is no default embedding function. If you add() documents without embeddings, you must have manually specified an embedding function and installed the dependencies for it.
+Chroma can be run in-memory in Python (without Docker), but this feature is not yet available in JS (this is on our roadmap). To run Chroma in client server mode, run the docker container: 
+Then update your chroma client to point at the docker container. Default: 
+The JS client then talks to the chroma server backend. This can run on your local computer or be easily deployed to AWS.
+Using collections 
+​ 
+Chroma lets you manage collections of embeddings, using the 
+primitive. 
+Creating, inspecting, and deleting Collections 
+​ 
+Chroma uses collection names in the url, so there are a few restrictions on naming them: 
+The length of the name must be between 3 and 63 characters.
+The name must start and end with a lowercase letter or a digit, and it can contain dots, dashes, and underscores in between.
+The name must not contain two consecutive dots.
+The name must not be a valid IP address.
+Chroma collections are created with a name and an optional embedding function. If you supply an embedding function, you must supply it every time you get the collection.
+Python 
+JavaScript 
+caution 
+If you later wish to 
+, you MUST do so with the embedding function you supplied while creating the collection 
+The embedding function takes text as input, and performs tokenization and embedding. If no embedding function is supplied, Chroma will use 
+sentence transfomer 
+ as a default.
+The JS client talks to a chroma server backend. This can run on your local computer or be easily deployed to AWS.
+caution 
+If you later wish to 
+, you MUST do so with the embedding function you supplied while creating the collection 
+The embedding function takes text as input, and performs tokenization and embedding. 
+You can learn more about 
+🧬 embedding functions 
+, and how to create your own.
+Python 
+JavaScript 
+Existing collections can be retrieved by name with 
+, and deleted with 
+. You can also use 
+ to get a collection if it exists, or create it if it doesn't.
+Existing collections can be retrieved by name with 
+, and deleted with 
+. 
+Collections have a few useful convenience methods.
+Python 
+JavaScript 
+Changing the distance function 
+​ 
+Python 
+Javascript 
+also takes an optional 
+argument which can be used to customize the distance method of the embedding space by setting the value of 
+. 
+also takes an optional 
+argument which can be used to customize the distance method of the embedding space by setting the value of 
+Valid options for 
+are "l2", "ip, "or "cosine". The 
+default 
+is "l2". The equations for each can be found in the docs for Hnswlib 
+here 
+. 
+Adding data to a Collection 
+​ 
+Add data to Chroma with 
+. 
+Raw documents: 
+Python 
+JavaScript 
+If Chroma is passed a list of 
+, it will automatically tokenize and embed them with the collection's embedding function (the default will be used if none was supplied at collection creation). Chroma will also store the 
+ themselves. If the documents are too large to embed using the chosen embedding function, an exception will be raised.
+Each document must have a unique associated 
+. Trying to 
+the same ID twice will result in an error. An optional list of 
+ dictionaries can be supplied for each document, to store additional information and enable filtering.
+Alternatively, you can supply a list of document-associated 
+ directly, and Chroma will store the associated documents without embedding them itself.
+Python 
+JavaScript 
+If the supplied 
+ are not the same dimension as the collection, an exception will be raised.
+You can also store documents elsewhere, and just supply a list of 
+and 
+to Chroma. You can use the 
+ to associate the embeddings with your documents stored elsewhere.
+Python 
+JavaScript 
+Querying a Collection 
+​ 
+Chroma collections can be queried in a variety of ways, using the 
+method. 
+You can query by a set of 
+. 
+Python 
+JavaScript 
+The query will return the 
+closest matches to each 
+, in order.
+An optional 
+filter dictionary can be supplied to filter the results by the 
+ associated with each document.
+Additionally, an optional 
+ filter dictionary can be supplied to filter the results by contents of the document.
+If the supplied 
+ are not the same dimension as the collection, an exception will be raised.
+You can also query by a set of 
+. Chroma will first embed each 
+ with the collection's embedding function, and then perform the query with the generated embedding.
+Python 
+JavaScript 
+You can also retrieve items from a collection by 
+using 
+. 
+You can also retrieve items from a collection by 
+using 
+. 
+also supports the 
+and 
+filters. If no 
+are supplied, it will return all items in the collection that match the 
+and 
+filters. 
+Choosing which data is returned 
+​ 
+When using get or query you can use the include parameter to specify which data you want returned - any of 
+, 
+, 
+, and for query, 
+. By default, Chroma will return the 
+, 
+and in the case of query, the 
+ of the results. 
+are excluded by default for performance and the 
+ are always returned. You can specify which of these you want returned by passing an array of included field names to the includes parameter of the query or get method.
+Using Where filters 
+​ 
+Chroma supports filtering queries by 
+and 
+contents. The 
+filter is used to filter by 
+, and the 
+filter is used to filter by 
+contents. 
+Filtering by metadata 
+​ 
+In order to filter on metadata, you must supply a 
+filter dictionary to the query. The dictionary must have the following structure: 
+Filtering metadata supports the following operators: 
+- equal to (string, int, float) 
+- not equal to (string, int, float) 
+- greater than (int, float) 
+- greater than or equal to (int, float) 
+- less than (int, float) 
+- less than or equal to (int, float) 
+Using the $eq operator is equivalent to using the 
+filter. 
+Filtering by document contents 
+​ 
+In order to filter on document contents, you must supply a 
+filter dictionary to the query. The dictionary must have the following structure: 
+Using logical operators 
+​ 
+You can also use the logical operators 
+and 
+ to combine multiple filters.
+An 
+ operator will return results that match all of the filters in the list.
+An 
+ operator will return results that match any of the filters in the list.
+Python 
+JavaScript 
+Updating data in a collection 
+​ 
+Any property of items in a collection can be updated using 
+. 
+If an 
+is not found in the collection, an exception will be raised. If 
+are supplied without corresponding 
+, the embeddings will be recomupted with the collection's embedding function.
+If the supplied 
+ are not the same dimension as the collection, an exception will be raised.
+Chroma also supports an 
+ operation, which updates existing items, or adds them if they don't yet exist.
+Python 
+JavaScript 
+If an 
+is not present in the collection, the corresponding items will be created as per 
+. Items with existing 
+s will be updated as per 
+. 
+Deleting data from a collection 
+​ 
+Chroma supports deleting items from a collection by 
+using 
+. The embeddings, documents, and metadata associated with each item will be deleted.
+⚠️ Naturally, this is a destructive operation, and cannot be undone.
+Python 
+JavaScript 
+also supports the 
+filter. If no 
+are supplied, it will delete all items in the collection that match the 
+filter. 
+Edit this page 
+Previous 
+🔑 Getting Started 
+Next 
+🧬 Embeddings 
+Initiating a persistent Chroma client 
+Running Chroma in client/server mode 
+Using collections 
+Creating, inspecting, and deleting Collections 
+Changing the distance function 
+Adding data to a Collection 
+Querying a Collection 
+Using Where filters 
+Updating data in a collection 
+Deleting data from a collection 
+Docs 
+Getting Started 
+API Reference 
+Community 
+Discord 
+Twitter 
+More 
+About 
+GitHub 
+Privacy 
+Terms 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

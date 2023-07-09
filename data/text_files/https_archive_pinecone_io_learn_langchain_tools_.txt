@@ -1,0 +1,261 @@
+Building Custom Tools for LLM Agents | Pinecone 
+Log In 
+Sign Up Free 
+Sign In 
+Create Account 
+ 
+ 
+Toggle menu 
+Building Custom Tools for LLM Agents 
+Agents 
+are one of the most powerful and fascinating approaches to using 
+L 
+arge 
+L 
+anguage 
+M 
+odels (LLMs). The explosion of interest in LLMs has made agents incredibly prevalent in AI-powered use cases.
+Using agents allows us to give LLMs access to tools. These tools present an infinite number of possibilities. With tools, LLMs can search the web, do math, run code, and more.
+The LangChain library provides a substantial selection of prebuilt tools. However, in many real-world projects, we’ll often find that only so many requirements can be satisfied by existing tools. Meaning we must modify existing tools or build entirely new ones.
+This chapter will explore how to build custom tools for agents in LangChain. We’ll start with a couple of simple tools to help us understand the typical 
+tool building pattern 
+ before moving on to more complex tools using other ML models to give us even more abilities like describing images.
+Building Tools 
+At their core, tools are objects that consume some input, typically in the format of a 
+string 
+ (text), and output some helpful information as a string.
+In reality, they are little more than a simple function that we’d find in any code. The only difference is that tools take input from an LLM and feed their output to an LLM.
+With that in mind, tools are relatively simple. Fortunately, we can build tools for our agents in no time.
+(Follow along with the 
+code notebook here!
+) 
+Simple Calculator Tool 
+We will start with a simple custom tool. The tool is a simple calculator that calculates a circle’s circumference based on the circle’s radius.
+To create the tool, we do the following: 
+Here we initialized our custom 
+class using the 
+object from LangChain. We can think of the 
+ as the required template for a LangChain tool.
+We have two attributes that LangChain requires to recognize an object as a valid tool. Those are the 
+and 
+parameters. 
+The 
+is a 
+natural language 
+description of the tool the LLM uses to decide whether it needs to use it. Tool descriptions should be very explicit on what they do, when to use them, and when 
+not 
+ to use them.
+In our 
+, we did not define when 
+not 
+to use the tool. That is because the LLM seemed capable of identifying when this tool is needed. Adding 
+“when not to use it” 
+ to the description can help if a tool is overused.
+Following this, we have two methods, 
+and 
+. When a tool is used, the 
+method is called by default. The 
+method is called when a tool is to be used 
+asynchronously 
+. We do not cover async tools in this chapter, so, for now, we initialize it with a 
+. 
+From here, we need to initialize the LLM and conversational memory for the 
+conversational 
+agent. For the LLM, we will use OpenAI’s 
+model. To use this, we need an 
+OpenAI API key 
+. 
+When ready, we initialize the LLM and memory like so: 
+Here we initialize the LLM with a 
+of 
+. A low 
+ is useful when using tools as it decreases the amount of “randomness” or “creativity” in the generated text of the LLMs, which is ideal for encouraging it to follow strict instructions — as required for tool usage.
+In the 
+object, we set 
+to “remember” the previous 
+five 
+ human-AI interactions.
+Now we initialize the agent itself. It requires the 
+and 
+to be already initialized. It also requires a list of 
+ to be used. We have one tool, but we still place it into a list.
+The agent type of 
+tells us a few things about this agent, those are: 
+means the LLM being used is a 
+chat 
+model. Both 
+and 
+are chat models as they consume conversation history and produce conversational responses. A model like 
+is 
+not 
+ a chat model as it is not designed to be used this way.
+means we will be including 
+. 
+refers to the 
+ReAct framework 
+, which enables multi-step reasoning and tool usage by giving the model the ability to 
+“converse with itself” 
+. 
+ tells us that the LLM/agent will decide which tool to use based on their descriptions — which we created in the earlier tool definition.
+With that all in place, we can ask our agent to calculate the circumference of a circle.
+Out[]: 
+Out[]: 
+The agent is close, but it isn’t accurate — something is wrong. We can see in the output of the 
+AgentExecutor Chain 
+that the agent jumped straight to the 
+Final Answer 
+action: 
+The 
+Final Answer 
+action is what the agent uses when it has decided it has completed its reasoning and action steps and has all the information it needs to answer the user’s query. That means the agent decided 
+not 
+ to use the circumference calculator tool.
+LLMs are generally bad at math, but that doesn’t stop them from trying to do math. The problem is due to the LLM’s overconfidence in its mathematical ability. To fix this, we must tell the model that it 
+cannot 
+do math. First, let’s see the current prompt being used: 
+Out[]: 
+We will add a single sentence that tells the model that it is 
+“terrible at math” 
+ and should never attempt to do it.
+With this added to the original prompt text, we create a new prompt using 
+— this will create the correct prompt structure for our agent, including tool descriptions. Then, we update 
+. 
+Now we can try again: 
+Out[]: 
+We can see that the agent now uses the 
+Circumference calculator 
+ tool and consequently gets the correct answer.
+Tools With Multiple Parameters 
+In the circumference calculator, we could only input a single value — the 
+ — more often than not, we will need multiple parameters.
+To demonstrate how to do this, we will build a 
+Hypotenuse calculator 
+. The tool will help us calculate the hypotenuse of a triangle given a combination of triangle side lengths and/or angles.
+We want multiple inputs here because we calculate the triangle hypotenuse with different values (the sides and angle). Additionally, we don’t need 
+all 
+values. We can calculate the hypotenuse with any combination of 
+two or more 
+parameters. 
+We define our new tool like so: 
+In the tool description, we describe the tool functionality in natural language and specify that to 
+“use the tool, you must provide at least two of the following parameters [‘adjacent_side’, ‘opposite_side’, ‘angle’]" 
+. This instruction is all we need for 
+ to understand the required input format for the function.
+As before, we must update the agent’s prompt. We don’t need to modify the system message as we did before, but we do need to update the available tools described in the prompt.
+Unlike before, we must also update the 
+attribute with our new tools: 
+Now we ask a question specifying two of the three required parameters: 
+Out[]: 
+The agent correctly identifies the correct parameters and passes them to our tool. We can try again with different parameters: 
+Out[]: 
+Again, we see correct tool usage. Even with our short tool description, the agent can consistently use the tool as intended and with multiple parameters.
+More Advanced Tool Usage 
+We’ve seen two examples of custom tools. In most scenarios, we’d likely want to do something more powerful — so let’s give that a go.
+Taking inspiration from the HuggingGPT paper 
+[1] 
+, we will take an existing open-source 
+expert model 
+ that has been trained for a specific task that our LLM cannot do.
+That model will be the 
+ model hosted on Hugging Face. This model takes an image and describes it, something that we cannot do with our LLM.
+To begin, we need to initialize the model like so: 
+The process we will follow here is as follows: 
+Download an image.
+Open it as a Python PIL object (an image datatype).
+Resize and normalize the image using the 
+. 
+Create a caption using the 
+. 
+Let’s start with steps 
+one 
+and 
+two 
+: 
+Out[]: 
+With this, we’ve downloaded an image of a young orangutan sitting in a tree. We can go ahead and see what the predicted caption for this image is: 
+Out[]: 
+Although an orangutan isn’t 
+technically 
+ a monkey, this is still reasonably accurate. Our code works. Now let’s distill these steps into a tool our agent can use.
+We reinitialize our agent prompt (removing the now unnecessary 
+“you cannot do math” 
+instruction) and set the 
+attribute to reflect the new tools list: 
+Now we can go ahead and ask our agent to describe the same image as above, passing its URL into the query.
+Out[]: 
+Let’s try some more: 
+Out[]: 
+That is another accurate description. Let’s try something more challenging: 
+Out[]: 
+Slightly inaccurate with 
+lizard 
+rather than 
+crocodile 
+, but otherwise, the caption is good.
+We’ve explored how to build custom tools for LangChain agents. A functionality that allows us to expand what is possible with Large Language Models massively.
+In our simple examples, we saw the typical structure of LangChain tools before moving on to adding 
+expert models 
+as tools, with our agent as the 
+controller 
+ of these models.
+Naturally, there is far more we can do than what we’ve shown here. Tools can be used to integrate with an endless list of functions and services or to communicate with an orchestra of expert models, as demonstrated by HuggingGPT.
+We can often use LangChain’s default tools for running SQL queries, performing calculations, or doing vector search. However, when these default tools cannot satisfy our requirements, we now know how to build our own.
+References 
+[1] Y. Shen, K. Song, et al., 
+HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in HuggingFace 
+(2023) 
+Comments 
+LangChain AI Handbook 
+Chapters: 
+LangChain: Introduction and Getting Started 
+Prompt Engineering and LLMs with Langchain 
+Chatbot Memory with Langchain 
+Fixing Hallucination with Knowledge Bases 
+Superpower LLMs with Conversational Agents in LangChain 
+Building Custom Tools for LLM Agents 
+Building Tools 
+References 
+Share: 
+Twitter 
+ 
+ 
+Facebook 
+ 
+ 
+Hacker News 
+What will you build?
+Upgrade your search or recommendation systems with just a few lines of code, or 
+contact us 
+ for help.
+Create Account 
+Pricing 
+Docs 
+Learn 
+Company 
+Contact 
+Careers 
+Support 
+© Pinecone Systems, Inc. | San Francisco, CA | 
+Terms 
+| 
+Privacy 
+| 
+Product Privacy 
+| 
+Cookies 
+| 
+Trust & Security 
+| 
+System Status 
+Pinecone is a registered trademark of Pinecone Systems, Inc.
+Don’t fill this out if you’re human: 
+Get product and article updates 
+ 
+ 
+ 
+ 
+ 
+ 
+Get Updates 
+Subscribed successfully.
+Failed to submit.

@@ -1,23 +1,39 @@
-from rest_framework.generics import GenericAPIView
 from rest_framework.views import APIView
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
-import requests
-import json
 from utils import functions
-from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
 import os
-from rest_framework import generics, authentication, permissions
-from rest_framework.authtoken.views import ObtainAuthToken
-import numpy as np
-from oauth2_provider.contrib.rest_framework import OAuth2Authentication
-from django.views import View
-from core.models import Item
-from django.forms.models import model_to_dict
 from utils.huggingface_pipeline import HuggingFaceModel
 from utils.instructor_embeddings import InstructorEmbeddings
-from utils.emotion_pipeline import EmotionClassifier
-from utils.nsfw_classifier import NSFWClassifier
+from langchain.vectorstores import Chroma
+from langchain.llms import OpenAI
+from langchain.chains import ConversationalRetrievalChain
+from langchain.memory import ConversationBufferMemory
+
+
+
+class OpenAIView(APIView):
+
+    def post(self, request):
+        client = functions.get_chroma_client()
+        vectorstore = Chroma(client=client, collection_name="docs_embeddings")
+        memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+        qa = ConversationalRetrievalChain.from_llm(OpenAI(temperature=0),
+                                                   vectorstore.as_retriever(),
+                                                   memory=memory,
+                                                   return_source_documents=True)
+
+
+        # get the body data from the request
+        data = request.data
+        query = data['message']
+
+        result = qa({"question": query})['answer']
+
+        return Response({'answer': result})
+
+
+
+
 
 
 
@@ -25,14 +41,10 @@ def load_models():
     # Create an instance of HuggingFaceModel
     huggingface_model = HuggingFaceModel()
     instructor_model = InstructorEmbeddings()
-    emotion_model = EmotionClassifier()
-    nsfw_model = NSFWClassifier()
 
     # Run the 'load' method
     huggingface_model.load()
     instructor_model.load()
-    emotion_model.load()
-    nsfw_model.load()
 
 
 class LoadModelsView(APIView):
@@ -43,8 +55,6 @@ class LoadModelsView(APIView):
 
 
 class ChatbotView(APIView):
-    # authentication_classes = [authentication.TokenAuthentication, OAuth2Authentication]
-    # permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
         print('-' * 80)
@@ -52,8 +62,7 @@ class ChatbotView(APIView):
         load_models()
 
         # # retrieve the user email from the incoming request
-        user = request.user
-        email = user.email
+        email = "user@mail.com"
 
         # get the body data from the request
         data = request.data
@@ -79,13 +88,10 @@ class ChatbotView(APIView):
 
 
 class DeleteHistoryView(APIView):
-    authentication_classes = [authentication.TokenAuthentication, OAuth2Authentication]
-    permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
         # # retrieve the user email from the incoming request
-        user = request.user
-        email = user.email
+        email = "user@mail.com"
 
         functions.delete_past_history(email)
 

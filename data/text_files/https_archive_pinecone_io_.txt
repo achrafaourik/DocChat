@@ -1,0 +1,180 @@
+Vector Database for Vector Search | Pinecone 
+Log In 
+Sign Up Free 
+Sign In 
+Create Account 
+ 
+ 
+Toggle menu 
+Long-term Memory for AI 
+The Pinecone 
+vector database 
+ makes it easy to build high-performance vector search applications. Developer-friendly, fully managed, and easily scalable without infrastructure hassles.
+Sign Up for Free 
+ 
+ 
+or contact us 
+Use Cases 
+What can you do with 
+vector search 
+? 
+Once you have 
+vector embeddings 
+, manage and search through them in Pinecone to power 
+semantic search 
+, recommenders, and other applications that rely on relevant information retrieval.
+Search 
+Semantic search 
+Product search 
+Multi-modal search 
+Question-Answering 
+Generation 
+Chatbots 
+Text generation 
+Image generation 
+Security 
+Anomaly Detection 
+Fraud Detection 
+Bot/threat detection 
+Identity verification 
+Personalization 
+Recommendations 
+Feed ranking 
+Ad targeting 
+Candidate selection 
+Analytics & ML 
+Data labeling 
+Model training 
+Molecular search 
+Generative AI 
+Data Management 
+Pattern matching 
+Deduplication 
+Grouping 
+Tagging 
+Trusted by 
+thousands of engineering teams 
+building AI applications 
+We wanted sub-second vector search across millions of alerts, an API interface that abstracts away the complexity, and we didn’t want to have to worry about database architecture or maintenance.
+Peter Silberman 
+ 
+ 
+CTO 
+Pinecone is the #1 vector database.
+Dharmesh Shah 
+ 
+ 
+Founder and CTO 
+Pinecone proved to deliver so much value — with reduced overhead and ultra-low latencies at scale — we didn’t need to do much convincing to move forward.
+Samee Zahid 
+ 
+ 
+Director of Engineering 
+Thanks to the Pinecone vector database we can run our high-performance applications across 10+ billion records without breaking a sweat.
+Ohad Parush 
+ 
+ 
+Chief R&D Officer 
+Pinecone made it fast and easy to take vector search from research to production, without DevOps. Thanks to their performance and scalability we can provide accurate, reliable, and real-time threat detection to our customers.
+Oded Kalev 
+ 
+ 
+R&D Group Lead 
+We wanted sub-second vector search across millions of alerts, an API interface that abstracts away the complexity, and we didn’t want to have to worry about database architecture or maintenance.
+Peter Silberman 
+ 
+ 
+CTO 
+Pinecone is the #1 vector database.
+Dharmesh Shah 
+ 
+ 
+Founder and CTO 
+Pinecone proved to deliver so much value — with reduced overhead and ultra-low latencies at scale — we didn’t need to do much convincing to move forward.
+Samee Zahid 
+ 
+ 
+Director of Engineering 
+Thanks to the Pinecone vector database we can run our high-performance applications across 10+ billion records without breaking a sweat.
+Ohad Parush 
+ 
+ 
+Chief R&D Officer 
+Pinecone made it fast and easy to take vector search from research to production, without DevOps. Thanks to their performance and scalability we can provide accurate, reliable, and real-time threat detection to our customers.
+Oded Kalev 
+ 
+ 
+R&D Group Lead 
+Read the Chipper Cash story 
+ 
+ 
+Why Pinecone 
+Fast, fresh, and filtered vector search.
+Fast 
+Ultra-low query latency, even with billions of items. Give users a great experience.
+Fresh 
+Live index updates when you add, edit, or delete data. Your data is ready right away.
+Filtered 
+Combine vector search with metadata filters for more relevant and faster results.
+Integrations 
+Supercharge your 
+AI stack 
+ 
+ 
+🦜🔗 
+LangChain 
+ 
+ 
+GPT Index 
+Managed Vector Database 
+Fully managed, 
+production-ready 
+Launch, use, and scale your vector search service with our easy API, without worrying about infrastructure or algorithms. We'll keep it running smoothly and securely.
+Easy to use 
+Get started on the free plan with an easy-to-use API or the Python client.
+Scalable 
+Scale from zero to billions of items, with no downtime and minimal latency impact.
+Pay for what you use 
+Start free, then pay only for what you use with usage-based pricing.
+No ops overhead 
+No need to maintain infrastructure, monitor services, or troubleshoot algorithms.
+Reliable 
+Choose a cloud provider and region — we'll take care of uptime, consistency, and the rest.
+Secure 
+Pinecone is SOC 2 Type II certified, GDPR-ready, and built to keep data secure.
+What will you build?
+Upgrade your search or recommendation systems with just a few lines of code, or 
+contact us 
+ for help.
+Create Account 
+Pricing 
+Docs 
+Learn 
+Company 
+Contact 
+Careers 
+Support 
+© Pinecone Systems, Inc. | San Francisco, CA | 
+Terms 
+| 
+Privacy 
+| 
+Product Privacy 
+| 
+Cookies 
+| 
+Trust & Security 
+| 
+System Status 
+Pinecone is a registered trademark of Pinecone Systems, Inc.
+Don’t fill this out if you’re human: 
+Get product and article updates 
+ 
+ 
+ 
+ 
+ 
+ 
+Get Updates 
+Subscribed successfully.
+Failed to submit.
