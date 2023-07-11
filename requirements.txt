@@ -22,8 +22,11 @@ einops
 chromadb
 InstructorEmbedding
 sentence_transformers
-langchain
+langchain==0.0.201
 django-oauth-toolkit
 gpustat
 pypdf
+typing-extensions==4.5.0
+typing-inspect==0.8.0
+pydantic==1.10.11
 openai
