@@ -6,12 +6,12 @@ from utils import functions
 
 
 doc_loaders = loaders.get_all_loaders()
-docs = []
-for loader in doc_loaders:
-    docs.extend(loader.load())
+documents = []
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-documents = text_splitter.split_documents(docs)
+
+for loader in doc_loaders:
+    documents.extend(text_splitter.split_documents(loader.load()))
 
 embeddings = InstructorEmbeddings().get_embedding_function()
 client = functions.get_chroma_client()
-vectorstore = Chroma(client=client, collection_name="docs_embeddings").from_documents(documents, embeddings)
+vectorstore = Chroma.from_documents(documents, embeddings)
