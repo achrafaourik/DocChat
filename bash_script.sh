@@ -3,7 +3,7 @@
 # Update and install dependencies
 apt-get update
 apt-get upgrade -y
-apt-get --assume-yes install postgresql postgresql-contrib unixodbc-dev python3-psycopg2 python3-dev gcc netcat vim git-lfs
+apt-get --assume-yes install postgresql postgresql-contrib unixodbc-dev python3-psycopg2 python3-dev gcc netcat vim git-lfs tmux htop jupyter
 
 # Upgrade pip and install dependencies
 # pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118

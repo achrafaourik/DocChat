@@ -12,6 +12,14 @@ text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 for loader in doc_loaders:
     documents.extend(text_splitter.split_documents(loader.load()))
 
-embeddings = InstructorEmbeddings().get_embedding_function()
 client = functions.get_chroma_client()
-vectorstore = Chroma.from_documents(documents, embeddings)
+
+instructor_ef = InstructorEmbeddings().get_embedding_function()
+collection = client.get_or_create_collection(name="docs_embeddings",
+                                             embedding_function=instructor_ef)
+collection.delete()
+
+
+collection.add(
+        documents=documents,
+        ids=[functions.generate_unique_id() for _ in range(len(documents))])
