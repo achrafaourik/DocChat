@@ -20,7 +20,7 @@ collection = client.get_or_create_collection(name="docs_embeddings",
                                              embedding_function=instructor_ef)
 collection.delete()
 
-
+docs = [x.page_content for x in documents]
 collection.add(
-        documents=documents,
-        ids=[functions.generate_unique_id() for _ in range(len(documents))])
+        documents=docs,
+        ids=[functions.generate_unique_id() for _ in range(len(docs))])
