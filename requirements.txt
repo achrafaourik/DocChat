@@ -22,7 +22,7 @@ einops
 chromadb
 InstructorEmbedding
 sentence_transformers
-langchain==0.0.201
+langchain==0.0.219
 django-oauth-toolkit
 gpustat
 pypdf

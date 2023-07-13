@@ -3,6 +3,7 @@ from langchain.vectorstores import Chroma
 from langchain.text_splitter import CharacterTextSplitter
 from utils.instructor_embeddings import InstructorEmbeddings
 from utils import functions
+from dotenv import load_dotenv; load_dotenv('.env'); load_dotenv('env.txt')
 
 
 doc_loaders = loaders.get_all_loaders()
