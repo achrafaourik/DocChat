@@ -58,6 +58,7 @@ class LoadModelsView(APIView):
 class ChatbotView(APIView):
 
     def post(self, request):
+        load_models()
         client = functions.get_chroma_client()
         embeddings = InstructorEmbeddings()
         vectorstore = Chroma(client=client,

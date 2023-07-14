@@ -1,3 +1,4 @@
+https://python.langchain.com/docs/get_started/introduction
 https://python.langchain.com/docs/get_started/installation
 https://python.langchain.com/docs/modules/chains/popular/chat_vector_db
 https://python.langchain.com/docs/modules/agents/agent_types/chat_conversation_agent
