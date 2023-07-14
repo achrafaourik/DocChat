@@ -3,7 +3,7 @@ from langchain.vectorstores import Chroma
 from langchain.text_splitter import CharacterTextSplitter
 from utils.instructor_embeddings import InstructorEmbeddings
 from utils import functions
-from dotenv import load_dotenv; load_dotenv('.env'); load_dotenv('env.txt')
+from dotenv import load_dotenv; load_dotenv('.env')
 
 
 doc_loaders = loaders.get_all_loaders()
@@ -16,9 +16,9 @@ for loader in doc_loaders:
 client = functions.get_chroma_client()
 
 instructor_ef = InstructorEmbeddings().get_embedding_function()
-collection = client.get_or_create_collection(name="docs_embeddings",
+client.delete_collection('docs_embeddings_local')
+collection = client.get_or_create_collection(name="docs_embeddings_local",
                                              embedding_function=instructor_ef)
-collection.delete()
 
 docs = [x.page_content for x in documents]
 collection.add(

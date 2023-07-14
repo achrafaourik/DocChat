@@ -12,7 +12,7 @@ pip install --upgrade pip
 pip install auto_gptq-0.2.2+cu117-cp310-cp310-linux_x86_64.whl
 # git lfs clone https://huggingface.co/TheBloke/Wizard-Vicuna-13B-Uncensored-GPTQ
 mkdir -p models
-python3 download-model.py TheBloke/Manticore-13B-GPTQ
+python3 download-model.py TheBloke/Wizard-Vicuna-30B-Uncensored-GPTQ
 pip install -r requirements_prod.txt
 
 # emtrypoint commands

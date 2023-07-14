@@ -1,27 +1,21 @@
 from transformers import pipeline, set_seed
 from time import perf_counter
-from langchain import PromptTemplate, LLMChain
 from langchain.llms import HuggingFacePipeline
 from transformers import AutoTokenizer, pipeline
 from auto_gptq import AutoGPTQForCausalLM
 import os
-from . import functions
-
-
-with open('./utils/template.txt', 'r') as f:
-    template = functions.convert_to_multiline_string(f.read())
 
 
 class HuggingFaceModel:
     """Class with only class methods"""
 
     # Class variable for the model pipeline
-    llm_chain = None
+    llm = None
 
     @classmethod
     def load(cls):
         # Only load one instance of the model
-        if cls.llm_chain is None:
+        if cls.llm is None:
             # Load the model pipeline.
             t0 = perf_counter()
             quantized_model_dir = [os.path.join('models', x) for x in os.listdir('models') if '-GPTQ' in x][0]
@@ -41,31 +35,18 @@ class HuggingFaceModel:
                 "text-generation",
                 model=cls.model,
                 tokenizer=cls.tokenizer,
-                max_new_tokens=100,
+                max_new_tokens=300,
                 temperature=0.9,
                 top_p=0.95,
                 repetition_penalty=1.15)
             cls.llm = HuggingFacePipeline(pipeline=cls.qa_pipeline)
-
-            # responses=[" default response"]
-            # cls.llm = FakeListLLM(responses=responses)
-
-            cls.prompt = PromptTemplate(template=template, input_variables=["history", "last_interactions", "input"])
-            cls.llm_chain = LLMChain(prompt=cls.prompt, llm=cls.llm)
-
             set_seed(420)
-            elapsed = 1000 * (perf_counter() - t0)
+
 
     @classmethod
-    def predict(cls, history: str, examples: str, last_interactions: str, text: str):
-
-        # Make sure the model is loaded
+    def get_llm(cls):
+        # load the LLM if not loaded yet
         cls.load()
 
-        # run the predictions using the llm chain
-        generated_text = cls.llm_chain.predict(history=history,
-                                               last_interactions=last_interactions,
-                                               input=text)
-
-        # Create the custom prediction object.
-        return {"answer": generated_text}
+        # get the language model
+        return cls.llm
