@@ -17,7 +17,6 @@ The objective is to provide these AI models with access to a rich database of in
 
 The system leverages advanced text retrieval and information ranking mechanisms to sift through a vast array of internal documents. Using the provided context, the system discerns user intent and identifies the most pertinent documents. These documents are then processed, extracting the most appropriate segments that can provide the user with the most accurate and comprehensive answer.
 
-Both choices have their own pros and cons that the user has to take into consideration before making their decision.
 
 ## 🛠 Features
 
