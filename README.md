@@ -141,4 +141,9 @@ curl -X POST -H "Content-Type: application/json" -d '{"message":"what is langcha
 |                                 | - Vendor lock-in risks                               |  |
 
 
+## 👋 Contact Me
 
+| Contact Method     |                                           |
+|--------------------|-------------------------------------------|
+| Email              | achrafaourik@gmail.com                    |
+| LinkedIn           | https://www.linkedin.com/in/achrafaourik/ |
