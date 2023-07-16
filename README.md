@@ -1,5 +1,5 @@
 <p align="center"><img src="./assets/hf-logo-with-title.png" width="10%"> <img src="./assets/ChatGPT_logo.svg.png" width="10%"> </p>
-<h1 align="center">Chat with your documents  💬</h1>
+<h1 align="center">DocChat  💬</h1>
 
 <p align="center">
   <img src="https://img.shields.io/pypi/pyversions/langchain">
