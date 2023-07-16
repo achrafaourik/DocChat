@@ -1,4 +1,14 @@
-# Chat with your documents (using ChatGPT and OpenSource LLMs)
+<p align="center"><img src="./assets/hf-logo-with-title.png" width="10%"> <img src="./assets/ChatGPT_logo.svg.png" width="10%"> </p>
+<h1 align="center">Chat with your documents  💬</h1>
+
+<p align="center">
+  <img src="https://img.shields.io/pypi/pyversions/langchain">
+  <img src="https://img.shields.io/badge/langchain-0.0.219-yellowgreen">
+</p>
+
+<p align="center">
+    <img src="https://img.shields.io/github/repo-size/achrafaourik/langchain_llm_chromadb">
+</p>
 
 ## ℹ️ About
 This project aims to create chatbots that are able to answer user questions using context provided from internal documents, meaning that it is possible to give knowledge to the chatbots using large corpus of data that the chatbot wasn't originally trained on. This project aims to give a choice about whether the user would like to leverage ChatGPT or use an OpenSource LLM to answer the questions.
@@ -39,7 +49,6 @@ Our goal with this project is to leverage the power of language models and docum
 - `ChromaDB`: For storing and searching embeddings and their metadata.
 - `Django`: As the primary backend framework.
 - `Docker`: For containerization of the application.
-- `Nginx`: For serving the application.
 - `Pytorch`: As the core machine learning library.
 - `HuggingFace`: For leveraging pre-trained models.
 - `InstructorEmbedding`: To generate text embeddings tailored to any task and domain.
