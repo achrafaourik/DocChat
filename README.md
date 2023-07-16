@@ -22,7 +22,7 @@ Both choices have their own pros and cons that the user has to take into conside
 ## 🛠 Features
 
 - **Model Choice Flexibility**: Choose between ChatGPT or a local language model based on your preferences and needs.
-- **Document Understanding**: Our system is designed to analyze your internal documents and extract the most relevant pieces of information in response to user queries.
+- **Document Understanding**:The system is designed to analyze your internal documents and extract the most relevant pieces of information in response to user queries.
 - **Cosine Similarity Search**: By comparing the cosine similarity between a user query and the text in the document, it retrieves the most relevant information to provide accurate and precise responses.
 - **Model Quantization**: The local language model uses quantization, a technique that reduces the VRAM consumed and speeds up inference considerably. This feature converts the transformer model weights from 16bit to 4bit, enabling efficient utilization of your hardware resources.
 
@@ -76,7 +76,7 @@ Our goal with this project is to leverage the power of language models and docum
 4. **Run the Docker Image**: Finally, launch the Docker image using the following command:
 
     ```shell
-    docker run -d -p 5000:5000 chatbot_image
+    docker run -d -p 5000:5000 --env-file .env chatbot_image
     ```
 
     Now your application is running on `localhost:5000`.
