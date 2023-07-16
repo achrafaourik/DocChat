@@ -21,8 +21,8 @@ RUN apt-get update \
 RUN pip install --upgrade pip
 RUN pip install auto_gptq-0.2.2+cu117-cp310-cp310-linux_x86_64.whl
 RUN mkdir -p models && python3 download-model.py TheBloke/Wizard-Vicuna-30B-Uncensored-GPTQ
-COPY ./requirements_prod.txt .
-RUN pip install -r requirements_prod.txt
+COPY ./requirements.txt .
+RUN pip install -r requirements.txt
 
 # copy entrypoint.sh
 COPY ./entrypoint.sh .
